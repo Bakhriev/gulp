@@ -1,0 +1,48 @@
+// Body
+body {
+  font-family: serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+// Wrapper
+.wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+// Container
+.container {
+  margin: 0 auto;
+
+  max-width: 1430px;
+  padding: 0 15px;
+}
+
+//flex items-center justify-between
+.flex-center-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// flex center
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+// btn
+.btn {
+  display: inline-block;
+  width: max-content;
+
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+
+  &:active {
+    outline-offset: 1px;
+  }
+}

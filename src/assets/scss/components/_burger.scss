@@ -1,0 +1,72 @@
+.burger {
+  position: relative;
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
+  z-index: 10;
+
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  pointer-events: initial;
+
+  cursor: pointer;
+  background-color: transparent;
+
+  &.active {
+    span {
+      background-color: transparent;
+      transition: background 0.2s ease-out;
+
+      &::before,
+      &::after {
+        transition: top 0.2s ease-out, transform 0.2s 0.2s ease-out;
+        background-color: $burgerActiveColor;
+      }
+
+      &::before {
+        top: 0;
+        transform: rotate3d(0, 0, 1, -45deg);
+      }
+      &::after {
+        top: 0;
+        transform: rotate3d(0, 0, 1, 45deg);
+      }
+    }
+  }
+
+  span {
+    position: absolute;
+    top: calc(50% - 1px);
+    left: calc(50% - 13px);
+
+    display: block;
+    height: 2px;
+    width: 26px;
+    transform-origin: 50% 50%;
+
+    transition: 0.2s ease-in-out, top 0.2s 0.2s ease-out, transform 0.2s linear;
+    background-color: $burgerActiveColor;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+
+      height: 2px;
+      width: 26px;
+
+      background-color: $burgerActiveColor;
+      transform-origin: 50% 50%;
+      transition: 0.2s ease-in-out, top 0.2s 0.2s ease-out,
+        transform 0.2s linear;
+    }
+    &::before {
+      top: 7px;
+    }
+    &::after {
+      top: -7px;
+    }
+  }
+}

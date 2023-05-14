@@ -1,0 +1,27 @@
+// Vendors
+@import './vendors/normalize.scss';
+
+// Base
+@import './base/reset';
+
+// UI
+@import '../ui/buttons/epic-btn.scss';
+@import '../ui/buttons/shiny-btn.scss';
+
+// Sass-utils
+@import './sass-utils/center';
+@import './sass-utils/disable-mob-hover';
+@import './sass-utils/global';
+@import './sass-utils/variables';
+
+//Components
+@import './components/overlay';
+@import './components/burger';
+@import './components/buttons';
+
+// Layouts
+@import './layout/header';
+@import './layout/footer';
+
+// Pages
+@import './pages/home';
