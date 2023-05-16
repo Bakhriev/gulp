@@ -1,0 +1,29 @@
+.card-hover-effect {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(transparent, darkviolet, transparent);
+    transition: top 0.4s linear;
+    transform: translateY(-50%);
+  }
+
+  &::before {
+    top: 60%;
+    left: 0;
+  }
+  &::after {
+    top: 40%;
+    right: 0;
+  }
+  @include hover {
+    &::before,
+    &::after {
+      top: 50%;
+    }
+  }
+}

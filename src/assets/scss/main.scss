@@ -4,15 +4,19 @@
 // Base
 @import './base/reset';
 
-// UI
-@import '../ui/buttons/epic-btn.scss';
-@import '../ui/buttons/shiny-btn.scss';
-
 // Sass-utils
 @import './sass-utils/center';
 @import './sass-utils/disable-mob-hover';
 @import './sass-utils/global';
 @import './sass-utils/variables';
+
+// Hover Effects
+@import './sass-utils/hover-effects';
+
+// UI
+@import '../ui/buttons/epic/epic-btn.scss';
+@import '../ui/buttons/shiny/shiny-btn.scss';
+@import '../ui/buttons/ripple/ripple-btn.scss';
 
 //Components
 @import './components/overlay';
@@ -25,3 +29,7 @@
 
 // Pages
 @import './pages/home';
+
+body {
+  background-color: gray;
+}

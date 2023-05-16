@@ -377,11 +377,17 @@ a {
 
 button {
     padding: 0;
-    border: none;
-    font: inherit;
-    cursor: pointer;
     width: -moz-max-content;
     width: max-content;
+    display: inline-block;
+    font: inherit;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+button:active {
+    outline-offset: 1px;
 }
 
 h1,
@@ -395,106 +401,8 @@ h6 {
 
 :focus-visible {
     outline-offset: 3px;
-    border-radius: 2px;
-    outline: 2px solid #0055ff;
-}
-
-.epic-btn {
-    position: relative;
-    padding: 25px 80px;
-    color: #fff;
-    border-radius: 5px;
-    overflow: hidden;
-    background-color: #206592;
-}
-
-.epic-btn > span {
-    display: block;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
-
-.epic-btn > span:last-child {
-    transform: translateY(40px);
-    opacity: 0;
-}
-
-.epic-btn::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    transition: transform 0.3s ease-in-out;
-    background-color: #2422c9;
-    transform: translateY(60px);
-}
-
-.epic-btn:hover::after {
-    transform: translateY(0);
-    border-radius: 0;
-}
-
-.epic-btn:hover > span:first-child {
-    transform: translateY(-40px);
-    opacity: 0;
-}
-
-.epic-btn:hover > span:last-child {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.shiny-btn {
-    position: relative;
-    margin: 0 40px;
-    padding: 20px 50px;
-    font-size: 23px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border-radius: 5px;
-    border: 1px solid transparent;
-    background-color: #0d0d0d;
-    overflow: hidden;
-    transition: 0.6s;
-    color: #206592;
-    border-color: #206592;
-}
-
-.shiny-btn::before, .shiny-btn::after {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 0;
-    height: 100%;
-    filter: blur(30px);
-    opacity: 0.4;
-    transition: 0.6s;
-}
-
-.shiny-btn::before {
-    width: 60px;
-    background: rgba(255, 255, 255, 0.6);
-    transform: translateX(-130px) skewX(-45deg);
-}
-
-.shiny-btn::after {
-    width: 30px;
-    background: rgba(255, 255, 255, 0.6);
-    transform: translateX(-130px) skewX(-45deg);
-}
-
-.shiny-btn:hover {
-    color: #f2f2f2;
-    background: #206592;
-}
-
-.shiny-btn:hover::before, .shiny-btn:hover::after {
-    opacity: 0.6;
-    transform: translateX(320px) skewX(-45deg);
+    border-radius: 1px;
+    outline: 2px solid darkorange;
 }
 
 body {
@@ -537,6 +445,167 @@ body {
 
 .btn:active {
     outline-offset: 1px;
+}
+
+.card-hover-effect {
+    position: relative;
+}
+
+.card-hover-effect::before, .card-hover-effect::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(transparent, darkviolet, transparent);
+    transition: top 0.4s linear;
+    transform: translateY(-50%);
+}
+
+.card-hover-effect::before {
+    top: 60%;
+    left: 0;
+}
+
+.card-hover-effect::after {
+    top: 40%;
+    right: 0;
+}
+
+@media (any-hover: hover) {
+    .card-hover-effect:hover::before, .card-hover-effect:hover::after {
+        top: 50%;
+    }
+}
+
+.epic-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.epic-btn > span {
+    display: block;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.epic-btn > span:last-child {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    color: #fff;
+}
+
+.epic-btn > span:last-child {
+    transform: translateY(40px);
+    opacity: 0;
+}
+
+.epic-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transition: transform 0.3s ease-in-out;
+    background-color: #fb8f1d;
+    transform: translateY(60px);
+}
+
+.epic-btn:active {
+    scale: 0.97;
+}
+
+@media (any-hover: hover) {
+    .epic-btn:hover::after {
+        transform: translateY(0);
+        border-radius: 0;
+    }
+}
+
+@media (any-hover: hover) {
+    .epic-btn:hover > span:first-child {
+        transform: translateY(-40px) skewX(20deg);
+        opacity: 0;
+    }
+
+    .epic-btn:hover > span:last-child {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.shiny-btn {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.6s;
+}
+
+.shiny-btn::before, .shiny-btn::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    height: 100%;
+    filter: blur(30px);
+    opacity: 0.4;
+    transition: 0.6s;
+}
+
+.shiny-btn::before {
+    width: 60px;
+    background: rgba(255, 255, 255, 0.6);
+    transform: translateX(-130px) skewX(-45deg);
+}
+
+.shiny-btn::after {
+    width: 30px;
+    background: rgba(255, 255, 255, 0.6);
+    transform: translateX(-130px) skewX(-45deg);
+}
+
+@media (any-hover: hover) {
+    .shiny-btn:hover {
+        color: #f2f2f2;
+        background: #206592;
+    }
+}
+
+@media (any-hover: hover) {
+    .shiny-btn:hover::before, .shiny-btn:hover::after {
+        opacity: 0.6;
+        transform: translateX(320px) skewX(-45deg);
+    }
+}
+
+.shiny-btn:active {
+    scale: 0.97;
+}
+
+.ripple-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple-btn > span {
+    position: absolute;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    animation: ripple 0.8s linear infinite;
+}
+
+@keyframes ripple {
+    from {
+        opacity: 0.5;
+        width: 0;
+        height: 0;
+    }
+
+    to {
+        opacity: 0;
+        width: 400px;
+        height: 400px;
+    }
 }
 
 .overlay {
@@ -710,4 +779,8 @@ body {
     transform: scaleX(0);
     transition: transform 200ms ease-in-out;
     transform-origin: right bottom;
+}
+
+body {
+    background-color: gray;
 }

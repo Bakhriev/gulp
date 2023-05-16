@@ -34,10 +34,17 @@ a {
 
 button {
   padding: 0;
-  border: none;
+  width: max-content;
+  display: inline-block;
+
   font: inherit;
   cursor: pointer;
-  width: max-content;
+  border: none;
+  background-color: transparent;
+
+  &:active {
+    outline-offset: 1px;
+  }
 }
 
 h1,
@@ -51,6 +58,6 @@ h6 {
 
 :focus-visible {
   outline-offset: 3px;
-  border-radius: 2px;
-  outline: 2px solid #0055ff;
+  border-radius: 1px;
+  outline: 2px solid darkorange;
 }

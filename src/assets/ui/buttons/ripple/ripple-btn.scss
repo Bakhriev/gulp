@@ -1,0 +1,26 @@
+.ripple-btn {
+  position: relative;
+  overflow: hidden;
+  & > span {
+    position: absolute;
+    translate: -50% -50%;
+
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    animation: ripple 0.8s linear infinite;
+  }
+}
+
+@keyframes ripple {
+  from {
+    opacity: 0.5;
+    width: 0;
+    height: 0;
+  }
+  to {
+    opacity: 0;
+    width: 400px;
+    height: 400px;
+  }
+}

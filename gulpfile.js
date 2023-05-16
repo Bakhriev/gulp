@@ -44,7 +44,7 @@ const path = {
   watch: {
     html: srcPath + '**/*.html',
     js: srcPath + 'assets/js/**/*.js',
-    css: srcPath + 'assets/scss/**/*.scss',
+    css: srcPath + 'assets/**/*.scss',
     images:
       srcPath +
       'assets/img/**/*.{jpg,png,svg,gif,ico,webp,webmanifest,xml,json}',
