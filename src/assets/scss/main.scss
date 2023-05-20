@@ -17,6 +17,7 @@
 @import '../ui/buttons/epic/epic-btn.scss';
 @import '../ui/buttons/shiny/shiny-btn.scss';
 @import '../ui/buttons/ripple/ripple-btn.scss';
+@import '../ui/card/card-light/card-light.scss';
 
 //Components
 @import './components/overlay';
@@ -32,4 +33,10 @@
 
 body {
   background-color: gray;
+}
+
+.card {
+  width: 400px;
+  height: 400px;
+  background-color: #222;
 }

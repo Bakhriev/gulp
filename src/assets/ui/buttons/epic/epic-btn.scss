@@ -41,7 +41,7 @@
   @include hover {
     & > span {
       &:first-child {
-        transform: translateY(-40px) skewX(20deg);
+        transform: translateY(-40px);
         opacity: 0;
       }
       &:last-child {
