@@ -447,36 +447,6 @@ body {
     outline-offset: 1px;
 }
 
-.card-hover-effect {
-    position: relative;
-}
-
-.card-hover-effect::before, .card-hover-effect::after {
-    content: "";
-    position: absolute;
-    width: 1px;
-    height: 80px;
-    background: linear-gradient(transparent, darkviolet, transparent);
-    transition: top 0.4s linear;
-    transform: translateY(-50%);
-}
-
-.card-hover-effect::before {
-    top: 60%;
-    left: 0;
-}
-
-.card-hover-effect::after {
-    top: 40%;
-    right: 0;
-}
-
-@media (any-hover: hover) {
-    .card-hover-effect:hover::before, .card-hover-effect:hover::after {
-        top: 50%;
-    }
-}
-
 .epic-btn {
     position: relative;
     overflow: hidden;
@@ -608,6 +578,28 @@ body {
     }
 }
 
+.img-container {
+    position: relative;
+    overflow: hidden;
+    width: -moz-max-content;
+    width: max-content;
+}
+
+.magnifier {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    z-index: 2;
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 50%;
+    background: url("https://images.unsplash.com/photo-1682685797703-2bb22dbb885b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80") no-repeat center;
+    background-size: 1500px;
+}
+
 .card-light {
     position: relative;
 }
@@ -639,6 +631,36 @@ body {
     background: linear-gradient(180deg, rgb(2, 0, 36) 0%, rgb(149, 149, 181) 35%, rgb(42, 180, 157) 89%, rgb(0, 212, 255) 100%);
     opacity: 0;
     transition: opacity 0.2s linear, left 0.2s linear;
+}
+
+.card-neon-stick {
+    position: relative;
+}
+
+.card-neon-stick::before, .card-neon-stick::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(transparent, darkviolet, transparent);
+    transition: top 0.4s linear;
+    transform: translateY(-50%);
+}
+
+.card-neon-stick::before {
+    top: 60%;
+    left: 0;
+}
+
+.card-neon-stick::after {
+    top: 40%;
+    right: 0;
+}
+
+@media (any-hover: hover) {
+    .card-neon-stick:hover::before, .card-neon-stick:hover::after {
+        top: 50%;
+    }
 }
 
 .overlay {

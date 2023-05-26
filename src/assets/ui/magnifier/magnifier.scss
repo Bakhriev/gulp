@@ -1,0 +1,25 @@
+.img-container {
+  position: relative;
+  overflow: hidden;
+  width: max-content;
+}
+
+.magnifier {
+  display: none;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  z-index: 2;
+
+  width: 150px;
+  height: 150px;
+
+  border: 2px solid black;
+  border-radius: 50%;
+
+  background: url('https://images.unsplash.com/photo-1682685797703-2bb22dbb885b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80')
+    no-repeat center;
+  background-size: 1500px;
+}

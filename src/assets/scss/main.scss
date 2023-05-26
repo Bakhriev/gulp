@@ -10,14 +10,16 @@
 @import './sass-utils/global';
 @import './sass-utils/variables';
 
-// Hover Effects
-@import './sass-utils/hover-effects';
-
 // UI
+// UI / Buttons
 @import '../ui/buttons/epic/epic-btn.scss';
 @import '../ui/buttons/shiny/shiny-btn.scss';
 @import '../ui/buttons/ripple/ripple-btn.scss';
+@import '../ui/magnifier/magnifier.scss';
+
+// UI / Card
 @import '../ui/card/card-light/card-light.scss';
+@import '../ui/card/card-neon-stick/card-neon-stick.scss';
 
 //Components
 @import './components/overlay';
