@@ -3,6 +3,7 @@ body {
   font-family: serif;
   font-weight: 400;
   font-size: 16px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 // Wrapper
@@ -10,6 +11,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 // Container
@@ -18,17 +20,4 @@ body {
 
   max-width: 1430px;
   padding: 0 15px;
-}
-
-//flex items-center justify-between
-.flex-center-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-// flex center
-.flex-center {
-  display: flex;
-  align-items: center;
 }

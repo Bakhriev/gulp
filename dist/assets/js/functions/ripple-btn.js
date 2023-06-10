@@ -12,3 +12,6 @@ export function rippleEffect(e) {
     span.remove()
   }, 800)
 }
+
+// const button = document.querySelector('.btn-r')
+// button.addEventListener('click', rippleEffect)

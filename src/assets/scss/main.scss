@@ -1,11 +1,7 @@
-// Vendors
-@import './vendors/normalize.scss';
-
 // Base
 @import './base/reset';
 
 // Sass-utils
-@import './sass-utils/center';
 @import './sass-utils/disable-mob-hover';
 @import './sass-utils/global';
 @import './sass-utils/variables';
@@ -14,31 +10,14 @@
 // UI / Buttons
 @import '../ui/buttons/epic/epic-btn.scss';
 @import '../ui/buttons/shiny/shiny-btn.scss';
-@import '../ui/buttons/ripple/ripple-btn.scss';
-@import '../ui/magnifier/magnifier.scss';
 
-// UI / Card
-@import '../ui/card/card-light/card-light.scss';
-@import '../ui/card/card-neon-stick/card-neon-stick.scss';
+// UI / DROPDOWN
+@import '../ui/dropdown/dropdown.scss';
 
 //Components
 @import './components/overlay';
 @import './components/burger';
-@import './components/buttons';
 
 // Layouts
 @import './layout/header';
 @import './layout/footer';
-
-// Pages
-@import './pages/home';
-
-body {
-  background-color: gray;
-}
-
-.card {
-  width: 400px;
-  height: 400px;
-  background-color: #222;
-}

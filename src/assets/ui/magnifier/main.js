@@ -22,7 +22,6 @@ imgContainer.addEventListener('mousemove', e => {
 
     magnifier.style.left = `${x}px`
     magnifier.style.top = `${y}px`
-    console.log(magnifier.backgroundSize)
     const bgX = (100 * x) / img.offsetWidth
     const bgY = (100 * y) / img.offsetHeight
 

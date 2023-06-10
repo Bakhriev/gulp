@@ -19,6 +19,7 @@
     "gulp-sass": "^5.1.0",
     "gulp-strip-css-comments": "^2.0.0",
     "gulp-uglify": "^3.0.2",
+    "gulp-uncss": "^1.0.6",
     "gulp-webp": "^4.0.1",
     "panini": "^1.7.2",
     "sass": "^1.56.1",
