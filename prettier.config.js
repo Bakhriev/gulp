@@ -5,22 +5,5 @@ module.exports = {
   semi: false,
   singleQuote: true,
   arrowParens: 'avoid',
-  htmlVoidTags: [
-    'area',
-    'base',
-    'br',
-    'col',
-    'embed',
-    'hr',
-    'img',
-    'input',
-    'link',
-    'meta',
-    'param',
-    'source',
-    'track',
-    'wbr',
-    'link',
-    'meta'
-  ]
+  proseWrap: 'never',
 }
