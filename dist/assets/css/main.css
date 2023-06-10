@@ -325,7 +325,7 @@ body {
     background-color: transparent;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 768px) {
     .burger {
         display: flex;
     }
@@ -338,7 +338,7 @@ body {
 
 .burger.active span::before, .burger.active span::after {
     transition: top 0.2s ease-out, transform 0.2s 0.2s ease-out;
-    background-color: rgb(255, 255, 255);
+    background-color: #fff;
 }
 
 .burger.active span::before {
@@ -360,7 +360,7 @@ body {
     width: 26px;
     transform-origin: 50% 50%;
     transition: 0.2s ease-in-out, top 0.2s 0.2s ease-out, transform 0.2s linear;
-    background-color: rgb(255, 255, 255);
+    background-color: #000;
 }
 
 .burger span::before, .burger span::after {
@@ -368,7 +368,7 @@ body {
     position: absolute;
     height: 2px;
     width: 26px;
-    background-color: rgb(255, 255, 255);
+    background-color: #000;
     transform-origin: 50% 50%;
     transition: 0.2s ease-in-out, top 0.2s 0.2s ease-out, transform 0.2s linear;
 }
@@ -390,6 +390,12 @@ body {
     align-items: center;
 }
 
+@media screen and (max-width: 768px) {
+    .header__container {
+        justify-content: space-between;
+    }
+}
+
 .header__navigation {
     display: flex;
     align-items: center;
@@ -408,6 +414,7 @@ body {
         top: 0;
         z-index: 10;
         flex-direction: column;
+        gap: 30px;
         min-height: 100%;
         width: 250px;
         padding: 100px 0;
@@ -422,18 +429,25 @@ body {
 
 .header__buttons {
     margin-left: auto;
+    display: flex;
     gap: 20px;
 }
 
 @media screen and (max-width: 768px) {
     .header__buttons {
-        margin: 30px 0;
+        margin-left: 0;
         flex-direction: column;
     }
 }
 
 .header__nav {
     margin-left: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    .header__nav {
+        margin-left: 0;
+    }
 }
 
 .nav__list {
@@ -449,19 +463,19 @@ body {
     }
 }
 
-.nav__list-item-link {
+.nav__link {
     color: #222;
     position: relative;
 }
 
 @media (any-hover: hover) and (pointer: fine) {
-    .nav__list-item-link:hover::after {
+    .nav__link:hover::after {
         transform: scaleX(1);
         transform-origin: left bottom;
     }
 }
 
-.nav__list-item-link::after {
+.nav__link::after {
     content: "";
     position: absolute;
     left: 0;

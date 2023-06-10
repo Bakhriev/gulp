@@ -5,6 +5,9 @@
   &__container {
     display: flex;
     align-items: center;
+    @media screen and (max-width: 768px) {
+      justify-content: space-between;
+    }
   }
 
   &__navigation {
@@ -24,6 +27,7 @@
       z-index: 10;
 
       flex-direction: column;
+      gap: 30px;
 
       min-height: 100%;
       width: 250px;
@@ -43,16 +47,20 @@
 
   &__buttons {
     margin-left: auto;
+    display: flex;
     gap: 20px;
 
     @media screen and (max-width: 768px) {
-      margin: 30px 0;
+      margin-left: 0;
       flex-direction: column;
     }
   }
 
   &__nav {
     margin-left: 40px;
+    @media screen and (max-width: 768px) {
+      margin-left: 0;
+    }
   }
 }
 .nav {
@@ -67,7 +75,7 @@
     }
   }
 
-  &__list-item-link {
+  &__link {
     color: $dark;
     // transition: color 0.3s ease-in-out;
 
