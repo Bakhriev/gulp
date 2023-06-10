@@ -3,12 +3,13 @@
   padding: 20px 0;
 
   &__container {
-    @media screen and (max-width: 768px) {
-      justify-content: space-between;
-    }
+    display: flex;
+    align-items: center;
   }
 
   &__navigation {
+    display: flex;
+    align-items: center;
     width: 100%;
 
     &.active {
@@ -49,9 +50,15 @@
       flex-direction: column;
     }
   }
+
+  &__nav {
+    margin-left: 40px;
+  }
 }
 .nav {
   &__list {
+    display: flex;
+    align-items: center;
     gap: 50px;
 
     @media screen and (max-width: 768px) {

@@ -21,6 +21,6 @@ module.exports = {
     'track',
     'wbr',
     'link',
-    'meta',
-  ],
+    'meta'
+  ]
 }
