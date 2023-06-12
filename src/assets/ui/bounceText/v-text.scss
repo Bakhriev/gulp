@@ -1,0 +1,19 @@
+.v-text {
+  display: flex;
+  span {
+    display: block;
+  }
+}
+.v-text-2 {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+}
+
+.duplicate {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}

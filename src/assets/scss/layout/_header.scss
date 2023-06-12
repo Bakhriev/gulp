@@ -76,10 +76,8 @@
   }
 
   &__link {
-    color: $dark;
-    // transition: color 0.3s ease-in-out;
-
     position: relative;
+    color: $dark;
 
     @include hover {
       &::after {
