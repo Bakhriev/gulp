@@ -1,28 +1,47 @@
 .dropdown {
   position: relative;
-  opacity: 0.6;
-  color: $secondary;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
 
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  border-radius: 2px;
   transition: opacity 0.3s ease-in-out, color 0.3s ease-in-out;
-  @media screen and (max-width: 992px) {
-    transition: opacity 0s;
+
+  svg {
+    transition: transform 150ms linear;
   }
+
   @include hover {
     color: $dark;
     opacity: 1;
   }
 
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  @media screen and (max-width: 992px) {
+    display: flex;
+    flex-direction: column;
+  }
+
   &.active {
-    color: $dark;
-    opacity: 1;
     svg {
       transform: rotate(-90deg);
     }
+
     .sub-menu {
       opacity: 1;
       user-select: auto;
       transform: scale(1);
       visibility: visible;
+
       &::before {
         content: '';
         position: absolute;
@@ -35,23 +54,10 @@
       }
     }
   }
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-
-  cursor: pointer;
-  user-select: none;
-  white-space: nowrap;
-  border-radius: 2px;
-  svg {
-    transition: transform 150ms linear;
-  }
 }
 
 .selected {
-  font: inherit;
+  color: #222;
 }
 
 .sub-menu {
@@ -61,8 +67,25 @@
   translate: -50% 0;
   width: 120px;
   z-index: 2;
+  @media screen and (max-width: 992px) {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    max-height: 0;
+    overflow: hidden;
+    user-select: auto;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: none;
+    border-radius: 0;
+    width: 220px;
+    border-radius: 5px;
+  }
 
-  max-height: 200px;
   transform: scale(0);
   opacity: 0;
   user-select: none;
@@ -73,9 +96,10 @@
   border-radius: 3px;
   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 
-  a {
+  &__link {
     display: block;
     padding: 5px;
+    color: #222;
     @include hover {
       background: linear-gradient(to right, #5e8baf, #17687c);
       color: #fff;
