@@ -382,13 +382,12 @@ body {
 
 @media (any-hover: hover) and (pointer: fine) {
     .sub-menu__link:hover {
-        background: linear-gradient(to right, #5e8baf, #17687c);
-        color: #fff;
+        color: red;
     }
 }
 
 .sub-menu__link:active {
-    background: linear-gradient(to right, #5e8baf, #17687c);
+    color: #222;
 }
 
 .overlay {
@@ -421,7 +420,7 @@ body {
     background-color: transparent;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
     .burger {
         display: flex;
     }
@@ -486,7 +485,7 @@ body {
     align-items: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
     .header__container {
         justify-content: space-between;
     }
@@ -505,7 +504,6 @@ body {
 @media screen and (max-width: 992px) {
     .header__navigation {
         position: fixed;
-        overflow: auto;
         right: 0;
         top: 0;
         bottom: 0;
@@ -527,18 +525,28 @@ body {
     gap: 20px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
     .header__buttons {
         margin-left: 0;
         flex-direction: column;
     }
 }
 
-.header__nav {
-    margin-left: 40px;
+.header__btn {
+    color: #222;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
+    .header__btn {
+        color: #222;
+    }
+}
+
+.header__nav {
+    margin-left: auto;
+}
+
+@media screen and (max-width: 992px) {
     .header__nav {
         margin-left: 0;
     }
@@ -550,7 +558,7 @@ body {
     gap: 50px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
     .nav__list {
         flex-direction: column;
         gap: 20px;
@@ -560,6 +568,12 @@ body {
 .nav__link {
     position: relative;
     color: #222;
+}
+
+@media screen and (max-width: 992px) {
+    .nav__link {
+        color: #222;
+    }
 }
 
 @media (any-hover: hover) and (pointer: fine) {

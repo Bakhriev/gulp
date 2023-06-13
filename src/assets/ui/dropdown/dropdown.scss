@@ -99,13 +99,14 @@
   &__link {
     display: block;
     padding: 5px;
-    color: #222;
+
+    color: $dark;
+
     @include hover {
-      background: linear-gradient(to right, #5e8baf, #17687c);
-      color: #fff;
+      color: red;
     }
     &:active {
-      background: linear-gradient(to right, #5e8baf, #17687c);
+      color: $dark;
     }
   }
 }

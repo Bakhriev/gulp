@@ -5,7 +5,8 @@
   &__container {
     display: flex;
     align-items: center;
-    @media screen and (max-width: 768px) {
+
+    @media screen and (max-width: $medium) {
       justify-content: space-between;
     }
   }
@@ -19,9 +20,8 @@
       transform: translateY(0);
     }
 
-    @media screen and (max-width: 992px) {
+    @media screen and (max-width: $medium) {
       position: fixed;
-      overflow: auto;
 
       right: 0;
       top: 0;
@@ -39,24 +39,32 @@
       transition: transform 0.6s ease-in-out;
 
       border-radius: 5px 0 0 5px;
-      background-color: #fff;
+      background-color: $light;
     }
   }
 
   &__buttons {
     margin-left: auto;
+
     display: flex;
     gap: 20px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: $medium) {
       margin-left: 0;
       flex-direction: column;
     }
   }
 
+  &__btn {
+    color: $dark;
+    @media screen and (max-width: $medium) {
+      color: $dark;
+    }
+  }
+
   &__nav {
-    margin-left: 40px;
-    @media screen and (max-width: 768px) {
+    margin-left: auto;
+    @media screen and (max-width: $medium) {
       margin-left: 0;
     }
   }
@@ -67,7 +75,7 @@
     align-items: center;
     gap: 50px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: $medium) {
       flex-direction: column;
       gap: 20px;
     }
@@ -76,6 +84,10 @@
   &__link {
     position: relative;
     color: $dark;
+
+    @media screen and (max-width: $medium) {
+      color: $dark;
+    }
 
     @include hover {
       &::after {
