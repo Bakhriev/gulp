@@ -221,7 +221,7 @@ body {
 .shiny-btn {
     position: relative;
     overflow: hidden;
-    transition: transform 0.6s;
+    transition: transform 0.3s, background 0.3s;
 }
 
 .shiny-btn::before, .shiny-btn::after {
@@ -267,10 +267,6 @@ body {
 
 .dropdown {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -294,10 +290,10 @@ body {
 .dropdown__wrapper {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 768px) {
     .dropdown {
         display: flex;
         flex-direction: column;
@@ -337,7 +333,7 @@ body {
     top: 35px;
     left: 50%;
     translate: -50% 0;
-    width: 120px;
+    min-width: 40px;
     z-index: 2;
     transform: scale(0);
     opacity: 0;
@@ -351,7 +347,7 @@ body {
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 768px) {
     .sub-menu {
         display: flex;
         flex-direction: column;
@@ -369,7 +365,8 @@ body {
         background-color: rgba(255, 255, 255, 0.7);
         box-shadow: none;
         border-radius: 0;
-        width: 220px;
+        width: -moz-max-content;
+        width: max-content;
         border-radius: 5px;
     }
 }
@@ -378,12 +375,6 @@ body {
     display: block;
     padding: 5px;
     color: #222;
-}
-
-@media (any-hover: hover) and (pointer: fine) {
-    .sub-menu__link:hover {
-        color: red;
-    }
 }
 
 .sub-menu__link:active {
@@ -504,15 +495,16 @@ body {
 @media screen and (max-width: 992px) {
     .header__navigation {
         position: fixed;
+        overflow-y: auto;
         right: 0;
         top: 0;
         bottom: 0;
         z-index: 10;
         flex-direction: column;
         gap: 30px;
-        min-width: 100%;
+        max-width: 300px;
         padding: 50px 0;
-        transform: translateY(-100%);
+        transform: translateX(100%);
         transition: transform 0.6s ease-in-out;
         border-radius: 5px 0 0 5px;
         background-color: #fff;
