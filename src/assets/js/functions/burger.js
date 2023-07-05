@@ -1,25 +1,22 @@
-;(function burgerMenu() {
+const burgerMenu = () => {
   const burger = document.querySelector('.burger')
   const navigation = document.querySelector('.header__navigation')
   const overlay = document.querySelector('.overlay')
+  const elements = [burger, navigation, overlay]
 
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('active')
-    navigation.classList.toggle('active')
-    overlay.classList.toggle('active')
-  })
+  const toggleActiveClass = () =>
+    elements.forEach(element => element.classList.toggle('active'))
 
-  overlay.addEventListener('click', () => {
-    burger.classList.remove('active')
-    navigation.classList.remove('active')
-    overlay.classList.remove('active')
-  })
+  burger.addEventListener('click', toggleActiveClass)
+
+  overlay.addEventListener('click', toggleActiveClass)
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 991.98) {
-      burger.classList.remove('active')
-      navigation.classList.remove('active')
-      overlay.classList.remove('active')
+    const { innerWidth } = window
+    if (innerWidth > 991.98) {
+      elements.forEach(element => element.classList.remove('active'))
     }
   })
-})()
+}
+
+burgerMenu()

@@ -5,9 +5,9 @@
   &::after {
     content: '';
     position: absolute;
-    width: 1px;
+    width: 2px;
     height: 80px;
-    background: linear-gradient(transparent, darkviolet, transparent);
+    background: linear-gradient(transparent, rgb(160, 50, 6), transparent);
     transition: top 0.4s linear;
     transform: translateY(-50%);
   }

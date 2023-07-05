@@ -22,6 +22,7 @@
 
     @media screen and (max-width: $medium) {
       position: fixed;
+      overflow-y: auto;
 
       right: 0;
       top: 0;
@@ -31,11 +32,11 @@
       flex-direction: column;
       gap: 30px;
 
-      min-width: 100%;
+      max-width: 300px;
 
       padding: 50px 0;
 
-      transform: translateY(-100%);
+      transform: translateX(100%);
       transition: transform 0.6s ease-in-out;
 
       border-radius: 5px 0 0 5px;

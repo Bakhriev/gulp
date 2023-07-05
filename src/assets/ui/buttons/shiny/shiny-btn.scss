@@ -1,7 +1,7 @@
 .shiny-btn {
   position: relative;
   overflow: hidden;
-  transition: transform 0.6s;
+  transition: transform 0.3s, background 0.3s;
 
   &::before,
   &::after {
