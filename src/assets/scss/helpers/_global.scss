@@ -1,0 +1,91 @@
+body {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	font-family: 'Segoe UI', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	overflow: hidden;
+}
+
+.main {
+	flex: 1;
+}
+
+.logo {
+	display: block;
+	flex-shrink: 0;
+}
+
+.container {
+	margin: 0 auto;
+
+	max-width: 1430px;
+	padding: 0 15px;
+}
+
+// on open some modals
+.disable-scroll {
+	overflow: hidden !important;
+}
+
+// Border on hover
+.border-bottom-line {
+	position: relative;
+	&::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: -6px;
+
+		height: 1px;
+		width: 100%;
+
+		background: #000;
+		border-radius: 5px;
+		transform: scaleX(0);
+		transition: transform 250ms ease-in-out;
+
+		// transform-origin: right bottom;
+		transform-origin: center;
+	}
+
+	@include hover {
+		&::before {
+			transform: scaleX(1);
+			// transform-origin: left bottom;
+		}
+	}
+}
+
+.visually-hidden {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
+}
+
+.btn-reset {
+	padding: 0;
+	cursor: pointer;
+
+	font: inherit;
+	color: inherit;
+	border: none;
+	background-color: transparent;
+}
+
+.list-reset {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
