@@ -1,0 +1,17 @@
+:root {
+	--burger-default: #222;
+	--burger-active: #222;
+}
+
+$breakpoints: (
+	'xs': 400px,
+	'sm': 544px,
+	'md': 768px,
+	'lg': 992px,
+	'xl': 1280px,
+	'xxl': 1440px,
+);
+
+$burgerIndex: 4;
+$mobileMenuIndex: 3;
+$overlayIndex: 2;
