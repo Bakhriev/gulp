@@ -3,7 +3,6 @@ const config = {
 	mode: "production",
 	entry: {
 		main: jsPath + "main.js",
-		about: jsPath + "about.js",
 	},
 	output: {
 		filename: "[name].js",

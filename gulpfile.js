@@ -13,6 +13,9 @@ const fileinclude = require("gulp-file-include")
 const del = require("del")
 const svgSprite = require("gulp-svg-sprite")
 const gcmq = require("gulp-group-css-media-queries")
+const htmlmin = require("gulp-htmlmin")
+const cleanCSS = require("gulp-clean-css")
+const uglify = require("gulp-uglify")
 
 // New
 const webpack = require("webpack-stream")
@@ -38,7 +41,7 @@ const path = {
 		html: srcPath + "*.html",
 		css: srcPath + "assets/scss/**/*.scss",
 		js: srcPath + "assets/js/**/*.js",
-		img: srcPath + "assets/img/**/*.{jpg,jpeg,png,svg}",
+		img: srcPath + "assets/**/*.{jpg,jpeg,png,svg}",
 		video: srcPath + "assets/video/**/*",
 		svg: srcPath + "assets/img/svg/**/*.svg",
 		vendors: srcPath + "assets/vendors/**/*.{css,js}",
@@ -139,6 +142,40 @@ function fonts() {
 		.pipe(browserSync.reload({stream: true}))
 }
 
+// Minify
+
+function htmlMin() {
+	return src(path.src.html)
+		.pipe(
+			fileinclude({
+				prefix: "@",
+				basepath: "@file",
+			})
+		)
+		.pipe(htmlmin({collapseWhitespace: true}))
+		.pipe(dest(path.build.html))
+}
+
+function cssMin() {
+	return src(path.src.css)
+		.pipe(sass())
+		.pipe(gcmq())
+		.pipe(
+			autoprefixer({
+				cascade: false,
+			})
+		)
+		.pipe(cleanCSS())
+		.pipe(dest(path.build.css))
+}
+
+function jsMin() {
+	return src(path.src.js)
+		.pipe(webpack(require("./webpack.config")))
+		.pipe(uglify())
+		.pipe(dest(path.build.js))
+}
+
 // Other Tasks
 function clean() {
 	return del(path.clean)
@@ -163,6 +200,11 @@ const dev = series(
 	serve
 )
 
+const build = series(
+	clean,
+	parallel(htmlMin, cssMin, jsMin, img, video, svg, vendors, fonts)
+)
+
 const preview = series(serve)
 
 function watchFiles() {
@@ -182,12 +224,16 @@ function watchFiles() {
 const runParallel = parallel(dev, watchFiles)
 
 exports.html = html
+exports.htmlMin = htmlMin
 exports.css = css
+exports.cssMin = cssMin
 exports.js = js
+exports.jsMin = jsMin
 exports.img = img
 exports.video = video
 exports.svg = svg
 exports.dev = dev
+exports.build = build
 exports.vendors = vendors
 exports.fonts = fonts
 exports.preview = preview
