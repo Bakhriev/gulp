@@ -16,6 +16,7 @@ const gcmq = require("gulp-group-css-media-queries")
 const htmlmin = require("gulp-htmlmin")
 const cleanCSS = require("gulp-clean-css")
 const uglify = require("gulp-uglify")
+const flatten = require("gulp-flatten")
 
 // New
 const webpack = require("webpack-stream")
@@ -41,7 +42,7 @@ const path = {
 		html: srcPath + "*.html",
 		css: srcPath + "assets/scss/**/*.scss",
 		js: srcPath + "assets/js/**/*.js",
-		img: srcPath + "assets/**/*.{jpg,jpeg,png,svg}",
+		img: srcPath + "assets/**/*.{jpg,jpeg,png}",
 		video: srcPath + "assets/video/**/*",
 		svg: srcPath + "assets/img/svg/**/*.svg",
 		vendors: srcPath + "assets/vendors/**/*.{css,js}",
@@ -108,14 +109,14 @@ function js() {
 }
 
 function img() {
-	return src(path.src.img).pipe(dest(path.build.img))
+	return src(path.src.img).pipe(flatten()).pipe(dest(path.build.img))
 }
 
 function video() {
 	return src(path.src.video).pipe(dest(path.build.video))
 }
 
-function svg() {
+function svgToSprite() {
 	return src(path.src.svg)
 		.pipe(
 			svgSprite({
@@ -126,6 +127,12 @@ function svg() {
 				},
 			})
 		)
+		.pipe(dest(path.build.svg))
+		.pipe(browserSync.reload({stream: true}))
+}
+
+function svgNormal() {
+	return src(path.src.svg)
 		.pipe(dest(path.build.svg))
 		.pipe(browserSync.reload({stream: true}))
 }
@@ -196,13 +203,23 @@ function prod(done) {
 
 const dev = series(
 	clean,
-	parallel(html, css, js, img, video, svg, vendors, fonts),
+	parallel(html, css, js, img, video, svgToSprite, svgNormal, vendors, fonts),
 	serve
 )
 
 const build = series(
 	clean,
-	parallel(htmlMin, cssMin, jsMin, img, video, svg, vendors, fonts)
+	parallel(
+		htmlMin,
+		cssMin,
+		jsMin,
+		img,
+		video,
+		svgToSprite,
+		svgNormal,
+		vendors,
+		fonts
+	)
 )
 
 const preview = series(serve)
@@ -216,7 +233,8 @@ function watchFiles() {
 	watch([srcPath + "assets/js/**/*.js"], js)
 	watch([path.src.img], img)
 	watch([path.src.video], video)
-	watch([path.src.svg], svg)
+	watch([path.src.svg], svgToSprite)
+	watch([path.src.svg], svgNormal)
 	watch([path.src.vendors], vendors)
 	watch([path.src.fonts], fonts)
 }
@@ -231,7 +249,8 @@ exports.js = js
 exports.jsMin = jsMin
 exports.img = img
 exports.video = video
-exports.svg = svg
+exports.svgToSprite = svgToSprite
+exports.svgNormal = svgNormal
 exports.dev = dev
 exports.build = build
 exports.vendors = vendors

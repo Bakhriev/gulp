@@ -12,11 +12,14 @@
 		"gulp-clean-css": "^4.3.0",
 		"gulp-cssbeautify": "3.0.1",
 		"gulp-file-include": "^2.3.0",
+		"gulp-flatten": "^0.4.0",
 		"gulp-group-css-media-queries": "^1.2.2",
+		"gulp-htmlmin": "^5.0.1",
 		"gulp-notify": "^4.0.0",
 		"gulp-plumber": "^1.2.1",
 		"gulp-sass": "^5.1.0",
 		"gulp-svg-sprite": "2.0.3",
+		"gulp-uglify": "^3.0.2",
 		"node-sass": "^9.0.0",
 		"prettier": "^3.2.4",
 		"style-loader": "^3.3.4",
@@ -27,5 +30,8 @@
 		"dev": "gulp",
 		"build": "gulp build",
 		"preview": "gulp preview"
+	},
+	"dependencies": {
+		"swiper": "^11.0.5"
 	}
 }
