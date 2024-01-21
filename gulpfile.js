@@ -112,6 +112,12 @@ function img() {
 	return src(path.src.img).pipe(flatten()).pipe(dest(path.build.img))
 }
 
+function imgComp() {
+	return src(srcPath + "assets/components/**/*.svg")
+		.pipe(flatten())
+		.pipe(dest(distPath + "assets/img"))
+}
+
 function video() {
 	return src(path.src.video).pipe(dest(path.build.video))
 }
@@ -203,7 +209,18 @@ function prod(done) {
 
 const dev = series(
 	clean,
-	parallel(html, css, js, img, video, svgToSprite, svgNormal, vendors, fonts),
+	parallel(
+		html,
+		css,
+		js,
+		img,
+		imgComp,
+		video,
+		svgToSprite,
+		svgNormal,
+		vendors,
+		fonts
+	),
 	serve
 )
 
@@ -214,6 +231,7 @@ const build = series(
 		cssMin,
 		jsMin,
 		img,
+		imgComp,
 		video,
 		svgToSprite,
 		svgNormal,
@@ -232,6 +250,7 @@ function watchFiles() {
 	watch([path.src.js], js)
 	watch([srcPath + "assets/js/**/*.js"], js)
 	watch([path.src.img], img)
+	watch([path.src.img], imgComp)
 	watch([path.src.video], video)
 	watch([path.src.svg], svgToSprite)
 	watch([path.src.svg], svgNormal)
@@ -248,6 +267,7 @@ exports.cssMin = cssMin
 exports.js = js
 exports.jsMin = jsMin
 exports.img = img
+exports.imgComp = imgComp
 exports.video = video
 exports.svgToSprite = svgToSprite
 exports.svgNormal = svgNormal
