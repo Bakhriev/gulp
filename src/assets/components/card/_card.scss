@@ -1,0 +1,17 @@
+.card {
+	margin: 50px;
+	padding: 20px;
+	border: 1px solid black;
+	width: 250px;
+	border-radius: 5px;
+	&__img {
+		border-radius: 20px;
+		width: 200px;
+		height: 150px;
+	}
+
+	&__icon {
+		width: 24px;
+		height: 24px;
+	}
+}
