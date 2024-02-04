@@ -17,6 +17,7 @@ const htmlmin = require("gulp-htmlmin")
 const cleanCSS = require("gulp-clean-css")
 const uglify = require("gulp-uglify")
 const flatten = require("gulp-flatten")
+const gulpif = require("gulp-if")
 
 // New
 const webpack = require("webpack-stream")
@@ -61,6 +62,7 @@ function html() {
 				basepath: "@file",
 			})
 		)
+		.pipe(gulpif(isProd, htmlmin({collapseWhitespace: true})))
 		.pipe(dest(path.build.html))
 		.pipe(browserSync.reload({stream: true}))
 }
@@ -86,6 +88,7 @@ function css() {
 			})
 		)
 		.pipe(cssbeautify())
+		.pipe(gulpif(isProd, cleanCSS()))
 		.pipe(dest(path.build.css))
 		.pipe(browserSync.reload({stream: true}))
 }
@@ -110,12 +113,6 @@ function js() {
 
 function img() {
 	return src(path.src.img).pipe(flatten()).pipe(dest(path.build.img))
-}
-
-function imgComp() {
-	return src(srcPath + "assets/components/**/*.svg")
-		.pipe(flatten())
-		.pipe(dest(distPath + "assets/img"))
 }
 
 function video() {
@@ -155,40 +152,6 @@ function fonts() {
 		.pipe(browserSync.reload({stream: true}))
 }
 
-// Minify
-
-function htmlMin() {
-	return src(path.src.html)
-		.pipe(
-			fileinclude({
-				prefix: "@",
-				basepath: "@file",
-			})
-		)
-		.pipe(htmlmin({collapseWhitespace: true}))
-		.pipe(dest(path.build.html))
-}
-
-function cssMin() {
-	return src(path.src.css)
-		.pipe(sass())
-		.pipe(gcmq())
-		.pipe(
-			autoprefixer({
-				cascade: false,
-			})
-		)
-		.pipe(cleanCSS())
-		.pipe(dest(path.build.css))
-}
-
-function jsMin() {
-	return src(path.src.js)
-		.pipe(webpack(require("./webpack.config")))
-		.pipe(uglify())
-		.pipe(dest(path.build.js))
-}
-
 // Other Tasks
 function clean() {
 	return del(path.clean)
@@ -203,41 +166,20 @@ function serve() {
 }
 
 function prod(done) {
-	!isProd
+	isProd = true
 	done()
 }
 
 const dev = series(
 	clean,
-	parallel(
-		html,
-		css,
-		js,
-		img,
-		imgComp,
-		video,
-		svgToSprite,
-		svgNormal,
-		vendors,
-		fonts
-	),
+	parallel(html, css, js, img, video, svgToSprite, svgNormal, vendors, fonts),
 	serve
 )
 
 const build = series(
 	clean,
-	parallel(
-		htmlMin,
-		cssMin,
-		jsMin,
-		img,
-		imgComp,
-		video,
-		svgToSprite,
-		svgNormal,
-		vendors,
-		fonts
-	)
+	prod,
+	parallel(html, css, js, img, video, svgToSprite, svgNormal, vendors, fonts)
 )
 
 const preview = series(serve)
@@ -250,7 +192,7 @@ function watchFiles() {
 	watch([path.src.js], js)
 	watch([srcPath + "assets/js/**/*.js"], js)
 	watch([path.src.img], img)
-	watch([path.src.img], imgComp)
+	// watch([path.src.img], imgComp)
 	watch([path.src.video], video)
 	watch([path.src.svg], svgToSprite)
 	watch([path.src.svg], svgNormal)
@@ -261,13 +203,9 @@ function watchFiles() {
 const runParallel = parallel(dev, watchFiles)
 
 exports.html = html
-exports.htmlMin = htmlMin
 exports.css = css
-exports.cssMin = cssMin
 exports.js = js
-exports.jsMin = jsMin
 exports.img = img
-exports.imgComp = imgComp
 exports.video = video
 exports.svgToSprite = svgToSprite
 exports.svgNormal = svgNormal

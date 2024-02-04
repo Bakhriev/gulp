@@ -9,5 +9,8 @@
 @import "./helpers/mixins";
 @import "./helpers/global";
 
-// Components
+// ## Components
+
+// Components / input
 @import "../components/input/input";
+@import "../components/input/_theme_dark/input_theme_dark";
