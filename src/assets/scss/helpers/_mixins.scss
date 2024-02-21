@@ -5,7 +5,7 @@
 		@if $property != null {
 			$transitionList: append(
 				$transitionList,
-				unquote('#{$property} 300ms ease-in-out'),
+				unquote("#{$property} 300ms ease-in-out"),
 				comma
 			);
 		}
@@ -53,20 +53,4 @@
 	top: 50%;
 	left: 50%;
 	translate: -50% -50%;
-}
-
-@mixin flex-center {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-@mixin flex-center-vert {
-	display: flex;
-	align-items: center;
-}
-
-@mixin flex-center-horiz {
-	display: flex;
-	justify-content: center;
 }
