@@ -17,7 +17,6 @@ const htmlmin = require("gulp-htmlmin")
 const cleanCSS = require("gulp-clean-css")
 const uglify = require("gulp-uglify")
 const flatten = require("gulp-flatten")
-const gulpif = require("gulp-if")
 
 // New
 const webpack = require("webpack-stream")
@@ -45,7 +44,7 @@ const path = {
 		js: srcPath + "assets/js/**/*.js",
 		img: srcPath + "assets/**/*.{jpg,jpeg,png}",
 		video: srcPath + "assets/video/**/*",
-		svg: srcPath + "assets/img/svg/**/*.svg",
+		svg: srcPath + "assets/**/*.svg",
 		vendors: srcPath + "assets/vendors/**/*.{css,js}",
 		fonts: srcPath + "assets/fonts/**/*",
 	},
@@ -62,7 +61,6 @@ function html() {
 				basepath: "@file",
 			})
 		)
-		.pipe(gulpif(isProd, htmlmin({collapseWhitespace: true})))
 		.pipe(dest(path.build.html))
 		.pipe(browserSync.reload({stream: true}))
 }
@@ -88,7 +86,6 @@ function css() {
 			})
 		)
 		.pipe(cssbeautify())
-		.pipe(gulpif(isProd, cleanCSS()))
 		.pipe(dest(path.build.css))
 		.pipe(browserSync.reload({stream: true}))
 }
@@ -115,12 +112,19 @@ function img() {
 	return src(path.src.img).pipe(flatten()).pipe(dest(path.build.img))
 }
 
+// function imgComp() {
+// 	return src(srcPath + "assets/components/**/*.svg")
+// 		.pipe(flatten())
+// 		.pipe(dest(distPath + "assets/img/svg"))
+// }
+
 function video() {
 	return src(path.src.video).pipe(dest(path.build.video))
 }
 
 function svgToSprite() {
 	return src(path.src.svg)
+		.pipe(flatten())
 		.pipe(
 			svgSprite({
 				mode: {
@@ -136,6 +140,7 @@ function svgToSprite() {
 
 function svgNormal() {
 	return src(path.src.svg)
+		.pipe(flatten())
 		.pipe(dest(path.build.svg))
 		.pipe(browserSync.reload({stream: true}))
 }
@@ -152,6 +157,40 @@ function fonts() {
 		.pipe(browserSync.reload({stream: true}))
 }
 
+// Minify
+
+function htmlMin() {
+	return src(path.src.html)
+		.pipe(
+			fileinclude({
+				prefix: "@",
+				basepath: "@file",
+			})
+		)
+		.pipe(htmlmin({collapseWhitespace: true}))
+		.pipe(dest(path.build.html))
+}
+
+function cssMin() {
+	return src(path.src.css)
+		.pipe(sass())
+		.pipe(gcmq())
+		.pipe(
+			autoprefixer({
+				cascade: false,
+			})
+		)
+		.pipe(cleanCSS())
+		.pipe(dest(path.build.css))
+}
+
+function jsMin() {
+	return src(path.src.js)
+		.pipe(webpack(require("./webpack.config")))
+		.pipe(uglify())
+		.pipe(dest(path.build.js))
+}
+
 // Other Tasks
 function clean() {
 	return del(path.clean)
@@ -166,7 +205,7 @@ function serve() {
 }
 
 function prod(done) {
-	isProd = true
+	!isProd
 	done()
 }
 
@@ -178,8 +217,17 @@ const dev = series(
 
 const build = series(
 	clean,
-	prod,
-	parallel(html, css, js, img, video, svgToSprite, svgNormal, vendors, fonts)
+	parallel(
+		htmlMin,
+		cssMin,
+		jsMin,
+		img,
+		video,
+		svgToSprite,
+		svgNormal,
+		vendors,
+		fonts
+	)
 )
 
 const preview = series(serve)
@@ -192,20 +240,26 @@ function watchFiles() {
 	watch([path.src.js], js)
 	watch([srcPath + "assets/js/**/*.js"], js)
 	watch([path.src.img], img)
-	// watch([path.src.img], imgComp)
+	watch([srcPath + "assets/components/**/*.svg"], svgToSprite)
 	watch([path.src.video], video)
 	watch([path.src.svg], svgToSprite)
 	watch([path.src.svg], svgNormal)
 	watch([path.src.vendors], vendors)
 	watch([path.src.fonts], fonts)
+	// watch([path.src.img], imgComp)
+	// watch([srcPath + "assets/components/**/*.svg"], imgComp)
 }
 
 const runParallel = parallel(dev, watchFiles)
 
 exports.html = html
+exports.htmlMin = htmlMin
 exports.css = css
+exports.cssMin = cssMin
 exports.js = js
+exports.jsMin = jsMin
 exports.img = img
+// exports.imgComp = imgComp
 exports.video = video
 exports.svgToSprite = svgToSprite
 exports.svgNormal = svgNormal
