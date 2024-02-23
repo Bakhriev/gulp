@@ -112,11 +112,7 @@ function img() {
 	return src(path.src.img).pipe(flatten()).pipe(dest(path.build.img))
 }
 
-// function imgComp() {
-// 	return src(srcPath + "assets/components/**/*.svg")
-// 		.pipe(flatten())
-// 		.pipe(dest(distPath + "assets/img/svg"))
-// }
+
 
 function video() {
 	return src(path.src.video).pipe(dest(path.build.video))
@@ -247,8 +243,7 @@ function watchFiles() {
 	watch([path.src.svg], svgNormal)
 	watch([path.src.vendors], vendors)
 	watch([path.src.fonts], fonts)
-	// watch([path.src.img], imgComp)
-	// watch([srcPath + "assets/components/**/*.svg"], imgComp)
+
 }
 
 const runParallel = parallel(dev, watchFiles)
@@ -260,7 +255,6 @@ exports.cssMin = cssMin
 exports.js = js
 exports.jsMin = jsMin
 exports.img = img
-// exports.imgComp = imgComp
 exports.video = video
 exports.svgToSprite = svgToSprite
 exports.svgNormal = svgNormal
