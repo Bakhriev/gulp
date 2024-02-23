@@ -1,6 +1,6 @@
 body {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	font-family: 'Segoe UI', sans-serif;
+	font-family: var(--ff-primary);
 	font-size: 16px;
 	font-weight: 400;
 }
@@ -24,7 +24,7 @@ body {
 .container {
 	margin: 0 auto;
 
-	max-width: 1430px;
+	max-width: 1710px;
 	padding: 0 15px;
 }
 
@@ -37,7 +37,7 @@ body {
 .border-bottom-line {
 	position: relative;
 	&::before {
-		content: '';
+		content: "";
 		position: absolute;
 		left: 0;
 		bottom: -6px;
@@ -45,7 +45,7 @@ body {
 		height: 1px;
 		width: 100%;
 
-		background: #000;
+		background-color: #000;
 		border-radius: 5px;
 		transform: scaleX(0);
 		transition: transform 250ms ease-in-out;
@@ -72,6 +72,34 @@ body {
 	clip: rect(0, 0, 0, 0) !important;
 	white-space: nowrap !important;
 	border: 0 !important;
+}
+
+.ripple-effect {
+	position: relative;
+	overflow: hidden;
+	.ripple-effect__circle {
+		position: absolute;
+		z-index: 0;
+		translate: -50% -50%;
+
+		border-radius: 50%;
+		background-color: var(--nobel);
+		pointer-events: none;
+		animation: ripple 0.8s linear;
+	}
+}
+
+@keyframes ripple {
+	from {
+		opacity: 0.5;
+		width: 0;
+		height: 0;
+	}
+	to {
+		opacity: 0;
+		width: 400px;
+		height: 400px;
+	}
 }
 
 .btn-reset {

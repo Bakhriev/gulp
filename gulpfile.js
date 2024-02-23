@@ -239,6 +239,7 @@ function watchFiles() {
 	watch([path.src.css], css)
 	watch([path.src.js], js)
 	watch([srcPath + "assets/js/**/*.js"], js)
+	watch([srcPath + "assets/**/*.js"], js)
 	watch([path.src.img], img)
 	watch([srcPath + "assets/components/**/*.svg"], svgToSprite)
 	watch([path.src.video], video)

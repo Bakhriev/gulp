@@ -1,6 +1,13 @@
-// @font-face {
-// 	font-family: 'FontName';
-// 	src: url('') format('woff2');
-// 	font-weight: 400;
-// 	font-style: normal;
-// }
+@font-face {
+	font-family: "Jost";
+	src: url("../fonts/Jost-Regular.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Jost";
+	src: url("../fonts/Jost-Medium.woff2") format("woff2");
+	font-weight: 500;
+	font-style: normal;
+}

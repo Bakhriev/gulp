@@ -1,4 +1,5 @@
 const jsPath = "./src/assets/js/"
+
 const config = {
 	mode: "production",
 	entry: {
