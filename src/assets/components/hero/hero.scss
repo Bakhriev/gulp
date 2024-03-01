@@ -1,0 +1,150 @@
+.hero {
+	padding-top: 40px;
+	background: linear-gradient(180deg, #f4f4f4 0%, #e2e2e2 100%);
+	&__inner {
+	}
+
+	&__top {
+		max-width: 846px;
+		padding: 0 20px;
+		margin: 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		padding-right: 70px;
+		margin-bottom: 40px;
+		@media screen and (max-width: 992px) {
+			padding-right: 20px;
+		}
+	}
+
+	&__logo {
+		position: relative;
+		z-index: 1;
+		@media screen and (max-width: 768px) {
+			width: 284px;
+			height: 50px;
+		}
+		@media screen and (max-width: 375px) {
+			width: 268px;
+			height: 47px;
+		}
+	}
+
+	&__links {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 4px;
+		@media screen and (max-width: 768px) {
+			display: none;
+		}
+	}
+
+	&__middle {
+		position: relative;
+		max-width: 836px;
+		padding: 0 15px;
+		margin: 0 auto;
+		background: linear-gradient(
+			90deg,
+			rgba(255, 255, 255, 0.01),
+			rgb(255, 255, 255) 15%,
+			rgb(255, 255, 255) 84.5%,
+			rgba(255, 255, 255, 0) 100%
+		);
+		border-top: 1px solid var(--red);
+		border-bottom: 1px solid var(--red);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-top: 25px;
+		padding-bottom: 13px;
+		margin-bottom: 42px;
+		@media screen and (max-width: 768px) {
+			align-items: flex-start;
+			&::after {
+				content: "";
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: 225px;
+				height: 282px;
+				background: url("../img/hero-girl.png") no-repeat center/cover;
+				@media screen and (max-width: 514px) {
+					width: 186px;
+					height: 233px;
+				}
+			}
+		}
+	}
+
+	&__middle-inner {
+	}
+
+	&__tablets {
+		position: relative;
+		z-index: 1;
+		margin-bottom: 25px;
+		@media screen and (max-width: 514px) {
+			width: 262px;
+			height: 61px;
+		}
+	}
+
+	&__price-wrapper {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		gap: 25px;
+		justify-content: center;
+	}
+
+	&__price {
+		font-family: var(--font-family);
+		font-weight: 500;
+		font-size: 20px;
+		text-transform: uppercase;
+		color: var(--black-100);
+	}
+
+	&__link {
+		display: block;
+		padding: 10px 34px;
+		font-family: var(--font-family);
+		font-weight: 500;
+		font-size: 14px;
+		text-transform: uppercase;
+		background: linear-gradient(211deg, #e25f32 39.04%, #d34e20 100%);
+		border-radius: 40px;
+		text-decoration: none;
+		color: #fff;
+		transition: scale 100ms ease-in-out;
+		@include hover {
+			scale: 0.97;
+		}
+	}
+
+	&__bot {
+		display: none !important;
+		max-width: 836px;
+		padding: 0 15px;
+		margin: 0 auto;
+	}
+}
+
+.advantage-item {
+	&__img {
+	}
+
+	&__info {
+	}
+
+	&__title {
+	}
+
+	&__subtitle {
+	}
+}

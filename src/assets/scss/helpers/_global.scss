@@ -24,8 +24,8 @@ body {
 .container {
 	margin: 0 auto;
 
-	max-width: 1710px;
-	padding: 0 15px;
+	max-width: 1160px;
+	padding: 0 20px;
 }
 
 // on open some modals
@@ -116,4 +116,8 @@ body {
 	margin: 0;
 	padding: 0;
 	list-style: none;
+}
+
+.text-red {
+	color: var(--red);
 }
