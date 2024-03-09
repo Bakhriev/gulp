@@ -1,17 +1,8 @@
-@mixin transition($properties...) {
-	$transitionList: ();
-
-	@each $property in $properties {
-		@if $property != null {
-			$transitionList: append(
-				$transitionList,
-				unquote("#{$property} 300ms ease-in-out"),
-				comma
-			);
-		}
-	}
-
-	transition: $transitionList;
+@mixin center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
 }
 
 @mixin hover {
@@ -19,17 +10,6 @@
 		&:hover {
 			@content;
 		}
-	}
-}
-
-@mixin breakpoint($breakpoint) {
-	@if map-has-key($breakpoints, $breakpoint) {
-		$breakpoint-value: map-get($breakpoints, $breakpoint);
-		@media screen and (max-width: $breakpoint-value) {
-			@content;
-		}
-	} @else {
-		@warn 'Invalid breakpoint: #{$breakpoint}.';
 	}
 }
 
@@ -46,11 +26,4 @@
 		-webkit-line-clamp: $numLines;
 		-webkit-box-orient: vertical;
 	}
-}
-
-@mixin center {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	translate: -50% -50%;
 }
