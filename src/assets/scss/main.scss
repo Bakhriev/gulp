@@ -1,14 +1,15 @@
 // base
-@import "./base/reset";
+@import './base/reset';
 
 // fonts
-@import "./fonts/fonts";
+@import './fonts/fonts';
 
 // helpers
-@import "./helpers/vars";
-@import "./helpers/mixins";
-@import "./helpers/global";
+@import './helpers/vars';
+@import './helpers/mixins';
+@import './helpers/global';
 
 //  Components
-@import "../components/header/header";
-@import "../components/footer/footer";
+@import '../components/header/header';
+@import '../components/burger/burger';
+@import '../components/footer/footer';
