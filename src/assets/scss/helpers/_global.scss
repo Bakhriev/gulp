@@ -20,13 +20,13 @@ body {
 }
 
 .container {
-	--container-padding: 20px;
-	--container-width: 1160px;
+	--padding: 15px;
+	--width: 1200px;
 
-	margin-inline: auto;
+	margin: 0 auto;
 
-	max-width: calc(var(--container-width) + var(--container-padding));
-	padding-inline: var(--container-padding);
+	max-width: calc(var(--width) + var(--padding));
+	padding: 0 var(--padding);
 }
 
 .disable-scroll {
