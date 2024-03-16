@@ -1,16 +1,11 @@
 body {
-	font-family: var(--font-family);
-	font-size: 16px;
-	font-weight: 400;
+	font: 400 16px/1.15 var(--font-family);
 
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.wrapper {
+.app {
 	overflow: hidden;
-
-	display: flex;
-	flex-direction: column;
 
 	min-height: 100vh;
 }
@@ -29,95 +24,98 @@ body {
 	padding: 0 var(--padding);
 }
 
-.disable-scroll {
-	overflow: hidden !important;
-}
-
-.btn-reset {
-	border: none;
-	padding: 0;
-	font: inherit;
-	color: inherit;
-	background-color: transparent;
-	cursor: pointer;
-}
-
-.list-reset {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-// Border on hover
-.border-bottom-line {
-	position: relative;
-
-	&::before {
-		content: "";
-
-		position: absolute;
-		bottom: -6px;
-		left: 0;
-
-		width: 100%;
-		height: 1px;
-
-		background-color: #000;
-
-		border-radius: 5px;
-		transform: scaleX(0);
-
-		// transform-origin: right bottom;
-		transform-origin: center;
-		transition: transform 250ms ease-in-out;
+.overlay {
+	&.active {
+		opacity: 1;
+		pointer-events: auto;
 	}
 
-	@include hover {
-		&::before {
-			transform: scaleX(1);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	pointer-events: none;
+	width: 100%;
+	height: 100vh;
+	opacity: 0;
 
-			// transform-origin: left bottom;
+	background-color: rgba(0, 0, 0, 0.5);
+	transition:
+		background-color 300ms ease-in-out,
+		opacity 300ms ease-in-out;
+}
+
+.burger {
+	position: relative;
+	text-align: left;
+	display: none;
+	pointer-events: initial;
+	height: 30px;
+	width: 30px;
+	padding: 0;
+	cursor: pointer;
+	background-color: transparent;
+	z-index: 3;
+	border: none;
+
+	@media screen and (max-width: 992px) {
+		display: flex;
+	}
+
+	&.active span {
+		background-color: transparent;
+		transition: background-color 0.2s ease-out;
+
+		&::before,
+		&::after {
+			transition:
+				top 0.2s ease-out,
+				transform 0.2s 0.2s ease-out;
+			background-color: #222;
+		}
+
+		&::before {
+			top: 0;
+			transform: rotate3d(0, 0, 1, -45deg);
+		}
+		&::after {
+			top: 0;
+			transform: rotate3d(0, 0, 1, 45deg);
 		}
 	}
-}
 
-.visually-hidden {
-	position: absolute !important;
-	overflow: hidden !important;
-	margin: -1px !important;
-	border: 0 !important;
-	padding: 0 !important;
-	width: 1px !important;
-	height: 1px !important;
-	white-space: nowrap !important;
-	clip: rect(0, 0, 0, 0) !important;
-}
-
-.ripple-effect {
-	position: relative;
-	overflow: hidden;
-
-	&__circle {
+	span {
 		position: absolute;
-		z-index: 0;
-		border-radius: 50%;
-		background-color: var(--nobel);
-		animation: ripple 0.8s linear;
-		pointer-events: none;
-		translate: -50% -50%;
-	}
-}
+		top: calc(50% - 1px);
+		left: calc(50% - 13px);
+		display: block;
+		height: 2px;
+		width: 26px;
+		transform-origin: 50% 50%;
+		transition:
+			0.2s ease-in-out,
+			top 0.2s 0.2s ease-out,
+			transform 0.2s linear;
+		background-color: #222;
 
-@keyframes ripple {
-	from {
-		width: 0;
-		height: 0;
-		opacity: 0.5;
-	}
-
-	to {
-		width: 400px;
-		height: 400px;
-		opacity: 0;
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			height: 2px;
+			width: 26px;
+			background-color: #222;
+			transform-origin: 50% 50%;
+			transition:
+				0.2s ease-in-out,
+				top 0.2s 0.2s ease-out,
+				transform 0.2s linear;
+		}
+		&::before {
+			top: 7px;
+		}
+		&::after {
+			top: -7px;
+		}
 	}
 }
