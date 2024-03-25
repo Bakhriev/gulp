@@ -5,13 +5,16 @@ body {
 }
 
 .app {
+	display: flex;
+	flex-direction: column;
+
 	overflow: hidden;
 
 	min-height: 100vh;
 }
 
 .main {
-	flex: 1;
+	flex-grow: 1;
 }
 
 .container {
@@ -21,5 +24,36 @@ body {
 	margin: 0 auto;
 
 	max-width: calc(var(--width) + var(--padding));
+	width: 100%;
+
 	padding: 0 var(--padding);
+}
+
+.border-bottom-line {
+	position: relative;
+
+	&::before {
+		content: '';
+
+		position: absolute;
+		bottom: -6px;
+		left: 0;
+
+		width: 100%;
+		height: 1px;
+
+		background-color: #000;
+
+		border-radius: 5px;
+		transform: scaleX(0);
+
+		transform-origin: center;
+		transition: transform 250ms ease-in-out;
+	}
+
+	@include hover {
+		&::before {
+			transform: scaleX(1);
+		}
+	}
 }
