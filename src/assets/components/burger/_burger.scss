@@ -1,6 +1,5 @@
 .burger {
 	position: relative;
-	z-index: 1;
 
 	display: none;
 
@@ -24,7 +23,7 @@
 			transition:
 				top 0.2s ease-out,
 				transform 0.2s 0.2s ease-out;
-			background-color: #222;
+			background-color: var(--black);
 		}
 
 		&::before {
@@ -36,7 +35,6 @@
 			transform: rotate3d(0, 0, 1, 45deg);
 		}
 	}
-
 	span {
 		position: absolute;
 		top: calc(50% - 1px);
@@ -46,7 +44,7 @@
 		height: 2px;
 		width: 26px;
 
-		background-color: #222;
+		background-color: var(--black);
 
 		transform-origin: 50% 50%;
 		transition:
@@ -62,7 +60,7 @@
 			height: 2px;
 			width: 26px;
 
-			background-color: #222;
+			background-color: var(--black);
 
 			transform-origin: 50% 50%;
 			transition:

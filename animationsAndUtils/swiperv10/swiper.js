@@ -1,22 +1,21 @@
-// core version + navigation, pagination modules:
-import Swiper from "swiper"
+import Swiper from 'swiper';
 import {
 	Navigation,
 	Pagination,
 	Scrollbar,
 	Autoplay,
 	EffectCoverflow,
-} from "swiper/modules"
-// import Swiper and modules styles
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
-import "swiper/css/scrollbar"
+} from 'swiper/modules';
 
-const swiper1 = new Swiper(".swiper-1", {
-	direction: "horizontal",
-	slidesPerView: "auto",
-	effect: "coverflow",
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+const swiper = new Swiper('.swiper', {
+	direction: 'horizontal',
+	slidesPerView: 'auto',
+	effect: 'coverflow',
 	grabCursor: true,
 	centeredSlides: true,
 	initialSlide: 2,
@@ -30,4 +29,4 @@ const swiper1 = new Swiper(".swiper-1", {
 
 	// Modules
 	modules: [EffectCoverflow],
-})
+});

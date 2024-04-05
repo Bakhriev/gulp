@@ -1,21 +1,21 @@
-const jsPath = "./src/assets/js/"
+const jsPath = './src/assets/js/';
 
 const config = {
-	mode: "production",
+	mode: 'production',
 	entry: {
-		main: jsPath + "main.js",
+		main: jsPath + 'main.js',
 	},
 	output: {
-		filename: "[name].js",
+		filename: '[name].js',
 	},
 	module: {
 		rules: [
 			{
 				test: /\.css$/,
-				use: ["style-loader", "css-loader"],
+				use: ['style-loader', 'css-loader'],
 			},
 		],
 	},
-}
+};
 
-module.exports = config
+module.exports = config;
