@@ -7,7 +7,6 @@
 // helpers
 @import './helpers/vars';
 @import './helpers/mixins';
-@import './helpers/utils';
 @import './helpers/global';
 
 //  Components
@@ -17,3 +16,6 @@
 @import '../components/burger/burger';
 
 @import '../components/footer/footer';
+
+// Utils
+@import './helpers/utils';
