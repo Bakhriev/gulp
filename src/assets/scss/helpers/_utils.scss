@@ -15,8 +15,11 @@
 }
 
 .btn-reset {
-	border: none;
 	padding: 0;
+	width: max-content;
+
+	white-space: nowrap;
+	border: none;
 	font: inherit;
 	color: inherit;
 	background-color: transparent;
@@ -37,4 +40,5 @@
 	border-radius: 0;
 	background-color: transparent;
 	font: inherit;
+	color: inherit;
 }

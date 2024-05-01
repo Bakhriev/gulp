@@ -1,38 +1,18 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Some Title</title>
-
-		<!-- Font -->
-		<link
-			rel="preload"
-			href="./assets/fonts/fontName.woff2"
-			as="font"
-			type="font/woff2"
-			crossorigin
-		/>
-
-		<!-- Favicon -->
-		<link rel="shortcut icon" type="image/png" href="./favicon.jpg" />
-
-		<!-- Styles -->
-		<link rel="stylesheet" href="./assets/css/main.css" />
-	</head>
+	@include('./head.html')
 	<body>
 		<div class="app">
 			@include('./assets/components/overlay/overlay.html')
 			@include('./assets/components/header/header.html')
 			<main class="main">
-				<!-- Sections -->
+				<!--  -->
 
-				<!-- Sections -->
+				<!--  -->
 			</main>
 			@include('./assets/components/footer/footer.html')
 		</div>
 
-		<!-- Scripts -->
 		<script src="./assets/js/main.js"></script>
 	</body>
 </html>
