@@ -1,4 +1,7 @@
 .burger {
+	$burgerColor: #000;
+	$burgerActiveColor: #000;
+
 	position: relative;
 	z-index: 5;
 
@@ -24,7 +27,7 @@
 			transition:
 				top 0.2s ease-out,
 				transform 0.2s 0.2s ease-out;
-			background-color: #000;
+			background-color: $burgerActiveColor;
 		}
 
 		&::before {
@@ -45,7 +48,7 @@
 		height: 2px;
 		width: 26px;
 
-		background-color: #000;
+		background-color: $burgerColor;
 
 		transform-origin: 50% 50%;
 		transition:
@@ -61,7 +64,7 @@
 			height: 2px;
 			width: 26px;
 
-			background-color: #000;
+			background-color: $burgerColor;
 
 			transform-origin: 50% 50%;
 			transition:
