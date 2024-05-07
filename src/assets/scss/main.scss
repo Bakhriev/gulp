@@ -6,6 +6,8 @@
 
 // helpers
 @import './helpers/vars';
+@import './helpers/utils';
+
 @import './helpers/mixins';
 @import './helpers/global';
 
@@ -17,5 +19,4 @@
 
 @import '../components/footer/footer';
 
-// Utils
-@import './helpers/utils';
+@import './helpers/helpers';

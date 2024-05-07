@@ -1,28 +1,13 @@
-.disable-scroll {
-	overflow: hidden;
-}
-
-.visually-hidden {
-	position: absolute !important;
-	overflow: hidden !important;
-	margin: -1px !important;
-	border: 0 !important;
-	padding: 0 !important;
-	width: 1px !important;
-	height: 1px !important;
-	white-space: nowrap !important;
-	clip: rect(0, 0, 0, 0) !important;
-}
-
 .btn-reset {
 	padding: 0;
-	width: max-content;
+	display: inline-block;
 
 	white-space: nowrap;
 	border: none;
 	font: inherit;
 	color: inherit;
 	background-color: transparent;
+
 	cursor: pointer;
 }
 
@@ -41,4 +26,26 @@
 	background-color: transparent;
 	font: inherit;
 	color: inherit;
+}
+
+.disable-scroll {
+	overflow: hidden;
+}
+
+.visually-hidden {
+	position: absolute !important;
+	overflow: hidden !important;
+	margin: -1px !important;
+	border: 0 !important;
+	padding: 0 !important;
+	width: 1px !important;
+	height: 1px !important;
+	white-space: nowrap !important;
+	clip: rect(0, 0, 0, 0) !important;
+}
+
+.click-scale {
+	&:active {
+		scale: 0.98;
+	}
 }

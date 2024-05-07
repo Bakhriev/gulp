@@ -1,6 +1,16 @@
-body {
-	font: 400 18px/1.1 var(--font-primary);
+html {
+	scroll-behavior: smooth;
 
+	scrollbar-gutter: stable;
+}
+
+body {
+	font-family: var(--font-primary);
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.1;
+
+	// hide tap bg on touch devices
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
