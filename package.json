@@ -1,13 +1,13 @@
 {
-	"name": "project",
-	"version": "1.0.0",
-	"author": "Murat <muratbakhriev@gmail.com>",
+	"name": "gulp_bem",
+	"version": "1.0.1",
+	"author": "Murat <legendofpain5112@gmail.com>",
 	"license": "MIT",
 	"devDependencies": {
 		"browser-sync": "^3.0.2",
-		"css-loader": "^6.9.1",
+		"css-loader": "^7.1.1",
 		"del": "6.0.0",
-		"gulp": "^4.0.2",
+		"gulp": "^5.0.0",
 		"gulp-autoprefixer": "8.0.0",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-cssbeautify": "3.0.1",
@@ -22,9 +22,10 @@
 		"gulp-svg-sprite": "2.0.3",
 		"gulp-uglify": "^3.0.2",
 		"node-sass": "^9.0.0",
-		"prettier": "^3.2.4",
-		"style-loader": "^3.3.4",
-		"webpack": "^5.89.0",
+		"prettier": "^3.2.5",
+		"sass": "^1.77.0",
+		"style-loader": "^4.0.0",
+		"webpack": "^5.91.0",
 		"webpack-stream": "^7.0.0"
 	},
 	"scripts": {
