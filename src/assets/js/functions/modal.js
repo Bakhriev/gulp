@@ -6,28 +6,38 @@ export const initModal = () => {
 		return;
 	}
 
+	// Close modal and remove listener for keyboard (escape)
 	const closeModal = () => {
 		modal.classList.remove('show');
-
 		document.removeEventListener('keyup', handleKeyUp);
 	};
 
-	modal.addEventListener('click', e => {
-		if (e.target === modal || e.target.classList.contains('modal__close')) {
+	// Show modal and add listener for keyboard (escape)
+	const showModal = () => {
+		modal.classList.add('show');
+		document.addEventListener('keyup', handleKeyUp);
+	};
+
+	// Close modal on click outside and close btn
+	modal.addEventListener('click', event => {
+		if (
+			event.target === modal ||
+			event.target.classList.contains('modal__close')
+		) {
 			closeModal();
 		}
 	});
 
-	const handleKeyUp = e => {
-		if (e.key === 'Escape') {
+	// Close modal on press escape
+	const handleKeyUp = event => {
+		if (event.key === 'Escape') {
 			closeModal();
 		}
 	};
 
+	//
 	openModalButton.addEventListener('click', () => {
-		modal.classList.add('show');
-
-		document.addEventListener('keyup', handleKeyUp);
+		showModal();
 	});
 };
 
