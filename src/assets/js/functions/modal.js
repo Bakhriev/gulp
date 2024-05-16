@@ -1,6 +1,8 @@
 export const initModal = () => {
 	const modal = document.querySelector('.modal');
-	const openModalButton = document.querySelector('.modal-trigger');
+
+	// Trigger btn for opening modal or triggers
+	const modalTrigger = document.querySelector('');
 
 	if (!modal) {
 		return;
@@ -18,7 +20,7 @@ export const initModal = () => {
 		document.addEventListener('keyup', handleKeyUp);
 	};
 
-	// Close modal on click outside and close btn
+	// Close modal on click outside or close btn
 	modal.addEventListener('click', event => {
 		if (
 			event.target === modal ||
@@ -35,8 +37,7 @@ export const initModal = () => {
 		}
 	};
 
-	//
-	openModalButton.addEventListener('click', () => {
+	modalTrigger.addEventListener('click', () => {
 		showModal();
 	});
 };
