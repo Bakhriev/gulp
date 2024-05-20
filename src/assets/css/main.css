@@ -1,0 +1,14 @@
+@import './base/reset.css';
+
+@import './fonts/fonts.css';
+
+@import './helpers/vars.css';
+@import './helpers/mixins.css';
+@import './helpers/utils.css';
+@import './helpers/global.css';
+
+@import '../components/burger/burger.css';
+@import '../components/overlay/overlay.css';
+
+@import '../components/header/header.css';
+@import '../components/footer/footer.css';

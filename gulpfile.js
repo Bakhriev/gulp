@@ -2,14 +2,13 @@
 
 const { src, dest, series, parallel, watch } = require('gulp');
 
-const sass = require('gulp-sass')(require('node-sass'));
 const cssbeautify = require('gulp-cssbeautify');
 const autoprefixer = require('gulp-autoprefixer');
 const plumber = require('gulp-plumber');
-const cleanCss = require('gulp-clean-css');
 const browserSync = require('browser-sync').create();
 const notify = require('gulp-notify');
 const fileinclude = require('gulp-file-include');
+const concatCss = require('gulp-concat-css');
 const del = require('del');
 const svgSprite = require('gulp-svg-sprite');
 const gcmq = require('gulp-group-css-media-queries');
@@ -40,7 +39,7 @@ const path = {
 	},
 	src: {
 		html: srcPath + '*.html',
-		css: srcPath + 'assets/scss/**/*.scss',
+		css: srcPath + 'assets/css/**/*.{scss,css}',
 		js: srcPath + 'assets/js/**/*.js',
 		img: srcPath + 'assets/**/*.{jpg,jpeg,png}',
 		video: srcPath + 'assets/video/**/*',
@@ -77,14 +76,14 @@ function css() {
 			plumber({
 				errorHandler: function (err) {
 					notify.onError({
-						title: 'SCSS Error',
+						title: 'CSS Error',
 						message: 'Error: <%= error.message %>',
 					})(err);
 					this.emit('end');
 				},
 			})
 		)
-		.pipe(sass())
+		.pipe(concatCss('src/assets/css/main.css'))
 		.pipe(gcmq())
 		.pipe(
 			autoprefixer({
@@ -92,6 +91,7 @@ function css() {
 			})
 		)
 		.pipe(cssbeautify())
+		.pipe(flatten())
 		.pipe(dest(path.build.css))
 		.pipe(browserSync.reload({ stream: true }));
 }
@@ -173,7 +173,7 @@ function htmlMin() {
 
 function cssMin() {
 	return src(path.src.css)
-		.pipe(sass())
+		.pipe(concatCss('src/assets/css/main.css'))
 		.pipe(gcmq())
 		.pipe(
 			autoprefixer({
@@ -181,6 +181,7 @@ function cssMin() {
 			})
 		)
 		.pipe(cleanCSS())
+		.pipe(flatten())
 		.pipe(dest(path.build.css));
 }
 
@@ -247,7 +248,7 @@ const preview = series(serve);
 function watchFiles() {
 	watch([path.src.html], html);
 	watch([srcPath + 'assets/**/*.html'], html);
-	watch([srcPath + 'assets/components/**/*.scss'], css);
+	watch([srcPath + 'assets/components/**/*.{scss,css}'], css);
 	watch([path.src.css], css);
 	watch([path.src.js], js);
 	watch([srcPath + 'assets/js/**/*.js'], js);
