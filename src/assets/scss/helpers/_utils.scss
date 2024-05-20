@@ -1,9 +1,8 @@
 .btn-reset {
-	padding: 0;
 	display: inline-block;
-	width: max-content;
-	white-space: nowrap;
 	user-select: none;
+
+	padding: 0;
 
 	border: none;
 	font: inherit;
@@ -30,7 +29,7 @@
 }
 
 .disable-scroll {
-	overflow: hidden;
+	overflow: hidden !important;
 }
 
 .visually-hidden {
@@ -43,10 +42,4 @@
 	height: 1px !important;
 	white-space: nowrap !important;
 	clip: rect(0, 0, 0, 0) !important;
-}
-
-.click-scale {
-	&:active {
-		scale: 0.98;
-	}
 }

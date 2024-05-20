@@ -4,6 +4,10 @@
 	box-sizing: border-box;
 }
 
+body {
+	margin: 0;
+}
+
 p {
 	margin: 0;
 }
@@ -20,19 +24,8 @@ h6 {
 img {
 	display: block;
 	max-width: 100%;
-	height: auto;
-}
-
-body {
-	margin: 0;
 }
 
 a {
 	text-decoration: none;
-}
-
-input[type='radio'],
-input[type='checkbox'] {
-	margin: 0;
-	vertical-align: top;
 }
