@@ -6,7 +6,6 @@ const sass = require('gulp-sass')(require('node-sass'));
 const cssbeautify = require('gulp-cssbeautify');
 const autoprefixer = require('gulp-autoprefixer');
 const plumber = require('gulp-plumber');
-const cleanCss = require('gulp-clean-css');
 const browserSync = require('browser-sync').create();
 const notify = require('gulp-notify');
 const fileinclude = require('gulp-file-include');
@@ -18,7 +17,7 @@ const cleanCSS = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 const flatten = require('gulp-flatten');
 
-// New
+// for webpack
 const webpack = require('webpack-stream');
 const cssLoader = require('css-loader');
 const styleLoader = require('style-loader');
@@ -51,7 +50,7 @@ const path = {
 	clean: distPath,
 };
 
-let isProd = false; // dev default
+let isProd = false;
 
 function html() {
 	return src(path.src.html)
@@ -61,12 +60,6 @@ function html() {
 				basepath: '@file',
 			})
 		)
-		.pipe(dest(path.build.html))
-		.pipe(browserSync.reload({ stream: true }));
-}
-
-function publicTask() {
-	return src(srcPath + 'assets/public/**/*')
 		.pipe(dest(path.build.html))
 		.pipe(browserSync.reload({ stream: true }));
 }
@@ -158,7 +151,6 @@ function fonts() {
 }
 
 // Minify
-
 function htmlMin() {
 	return src(path.src.html)
 		.pipe(
@@ -211,25 +203,13 @@ function prod(done) {
 
 const dev = series(
 	clean,
-	parallel(
-		publicTask,
-		html,
-		css,
-		js,
-		img,
-		video,
-		svgToSprite,
-		svgNormal,
-		vendors,
-		fonts
-	),
+	parallel(html, css, js, img, video, svgToSprite, svgNormal, vendors, fonts),
 	serve
 );
 
 const build = series(
 	clean,
 	parallel(
-		publicTask,
 		htmlMin,
 		cssMin,
 		jsMin,
@@ -259,7 +239,6 @@ function watchFiles() {
 	watch([path.src.svg], svgNormal);
 	watch([path.src.vendors], vendors);
 	watch([path.src.fonts], fonts);
-	watch([srcPath + 'assets/public/**/*'], publicTask);
 }
 
 const runParallel = parallel(dev, watchFiles);
@@ -278,7 +257,6 @@ exports.dev = dev;
 exports.build = build;
 exports.vendors = vendors;
 exports.fonts = fonts;
-exports.publicTask = publicTask;
 exports.preview = preview;
 exports.watchFiles = watchFiles;
 
