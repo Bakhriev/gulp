@@ -42,7 +42,7 @@ const path = {
 		html: srcPath + '*.html',
 		css: srcPath + 'assets/scss/**/*.scss',
 		js: srcPath + 'assets/js/**/*.js',
-		img: srcPath + 'assets/**/*.{jpg,jpeg,png}',
+		img: srcPath + 'assets/**/*.{jpg,jpeg,png,webp,avif}',
 		video: srcPath + 'assets/video/**/*',
 		svg: srcPath + 'assets/**/*.svg',
 		vendors: srcPath + 'assets/vendors/**/*.{css,js}',

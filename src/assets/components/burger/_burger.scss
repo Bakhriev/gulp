@@ -14,10 +14,6 @@
 	pointer-events: initial;
 	cursor: pointer;
 
-	@media screen and (max-width: 992px) {
-		display: flex;
-	}
-
 	&.active span {
 		background-color: transparent;
 		transition: background-color 0.2s ease-out;
