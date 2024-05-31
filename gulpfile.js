@@ -22,10 +22,6 @@ const del = require('del');
 const plumber = require('gulp-plumber');
 const browserSync = require('browser-sync').create();
 
-const webpack = require('webpack-stream');
-const cssLoader = require('css-loader');
-const styleLoader = require('style-loader');
-
 const srcPath = 'src/';
 const distPath = 'dist/';
 

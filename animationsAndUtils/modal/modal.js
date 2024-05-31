@@ -1,15 +1,12 @@
-export const initModal = () => {
-	const modal = document.querySelector('.modal');
-
+export const initModal = (modal, trigger, closeCls) => {
 	if (!modal) {
 		return;
 	}
 
-	const modalTrigger = document.querySelector('');
-
 	const closeModal = () => {
 		modal.classList.remove('show');
 		document.removeEventListener('keyup', handleKeyUp);
+		trigger.focus();
 	};
 
 	const showModal = () => {
@@ -18,7 +15,7 @@ export const initModal = () => {
 	};
 
 	modal.addEventListener('click', e => {
-		if (e.target === modal || e.target.classList.contains('modal__close')) {
+		if (e.target === modal || e.target.classList.contains(`${closeCls}`)) {
 			closeModal();
 		}
 	});
@@ -29,9 +26,37 @@ export const initModal = () => {
 		}
 	};
 
-	modalTrigger.addEventListener('click', () => {
-		showModal();
-	});
+	showModal();
+	trapFocus(modal);
 };
 
-initModal();
+export const trapFocus = element => {
+	const focusableEls = element.querySelectorAll(
+		'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'
+	);
+	const firstFocusableEl = focusableEls[0];
+	const lastFocusableEl = focusableEls[focusableEls.length - 1];
+	const KEYCODE_TAB = 9;
+
+	firstFocusableEl.focus();
+
+	element.addEventListener('keydown', e => {
+		const isTabPressed = e.key === 'Tab' || e.keyCode === KEYCODE_TAB;
+
+		if (!isTabPressed) {
+			return;
+		}
+
+		if (e.shiftKey) {
+			/* shift + tab */ if (document.activeElement === firstFocusableEl) {
+				lastFocusableEl.focus();
+				e.preventDefault();
+			}
+		} /* tab */ else {
+			if (document.activeElement === lastFocusableEl) {
+				firstFocusableEl.focus();
+				e.preventDefault();
+			}
+		}
+	});
+};

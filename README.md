@@ -1,58 +1,275 @@
-# Project Name
-
-A brief description of the project.
+# Gulp Build System Documentation
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Tasks](#tasks)
-- [Contributing](#contributing)
-- [License](#license)
+1. [Installation](#installation)
+2. [File Structure](#file-structure)
+3. [Gulp Tasks](#gulp-tasks)
+   - [HTML](#html)
+   - [CSS](#css)
+   - [JavaScript](#javascript)
+   - [Images](#images)
+   - [Videos](#videos)
+   - [SVG Handling](#svg-handling)
+   - [Vendors](#vendors)
+   - [Fonts](#fonts)
+   - [Minification](#minification)
+   - [Cleaning](#cleaning)
+   - [Server](#server)
+   - [Production](#production)
+4. [Watch Files](#watch-files)
+5. [Commands](#commands)
 
 ## Installation
 
-1. Clone the repository.
-2. Install the required dependencies by running the following command:
+To get started with this Gulp build system, you need to have Node.js and npm installed on your machine. Then, follow these steps:
 
-## Usage
+1. Clone or download the repository.
+2. Navigate to the project directory.
+3. Install the dependencies using npm:
 
-To start the development server and watch for changes, use the following command:
+   ```bash
+   npm install
+   ```
 
-```
-yarn run dev
-```
+## File Structure
 
-To build the project for production, use the following command:
-
-```
-yarn run build
-```
-
-To preview the project without building, use the following command:
+Here's the basic structure of the project:
 
 ```
-yarn run preview
+project/
+│
+├── src/
+│   ├── assets/
+│   │   ├── fonts/
+│   │   ├── img/
+│   │   ├── img/svg/
+│   │   ├── js/
+│   │   ├── scss/
+│   │   ├── video/
+│   │   └── vendors/
+│   └── *.html
+│
+├── dist/
+│   ├── assets/
+│   │   ├── fonts/
+│   │   ├── img/
+│   │   ├── img/svg/
+│   │   ├── js/
+│   │   ├── css/
+│   │   ├── video/
+│   │   └── vendors/
+│   └── *.html
+│
+├── gulpfile.js
+└── package.json
 ```
 
-## Tasks
+- **src/**: Source files.
+- **dist/**: Build output.
+- **gulpfile.js**: Gulp configuration.
+- **package.json**: Project metadata and dependencies.
 
-- `html`: Compile and process HTML files.
-- `css`: Compile and process SCSS files.
-- `js`: Compile and process JavaScript files.
-- `img`: Copy image files to the destination folder.
-- `video`: Copy video files to the destination folder.
-- `svgToSprite`: Generate SVG sprite file.
-- `svgNormal`: Copy SVG files to the destination folder.
-- `vendors`: Copy vendor files to the destination folder.
-- `fonts`: Copy font files to the destination folder.
+## Gulp Tasks
 
-## Contributing
+### HTML
 
-Contributions are welcome! If you find any issues or have suggestions, please open an issue or submit a pull request.
+#### `html`
 
-## License
+Compiles and includes HTML files:
 
-This project is licensed under the [MIT License](LICENSE).
+```javascript
+exports.html = html;
+```
 
-## Telegram @nfithr
+#### `htmlMin`
+
+Minifies HTML files:
+
+```javascript
+exports.htmlMin = htmlMin;
+```
+
+### CSS
+
+#### `css`
+
+Compiles SCSS to CSS, groups media queries, autoprefixes, and beautifies CSS:
+
+```javascript
+exports.css = css;
+```
+
+#### `cssMin`
+
+Compiles, groups media queries, autoprefixes, and minifies CSS:
+
+```javascript
+exports.cssMin = cssMin;
+```
+
+### JavaScript
+
+#### `js`
+
+Compiles JavaScript files:
+
+```javascript
+exports.js = js;
+```
+
+#### `jsMin`
+
+Minifies JavaScript files:
+
+```javascript
+exports.jsMin = jsMin;
+```
+
+### Images
+
+#### `img`
+
+Processes image files:
+
+```javascript
+exports.img = img;
+```
+
+### Videos
+
+#### `video`
+
+Processes video files:
+
+```javascript
+exports.video = video;
+```
+
+### SVG Handling
+
+#### `svgToSprite`
+
+Creates SVG sprite:
+
+```javascript
+exports.svgToSprite = svgToSprite;
+```
+
+#### `svgNormal`
+
+Processes individual SVG files:
+
+```javascript
+exports.svgNormal = svgNormal;
+```
+
+### Vendors
+
+#### `vendors`
+
+Processes vendor files (CSS/JS):
+
+```javascript
+exports.vendors = vendors;
+```
+
+### Fonts
+
+#### `fonts`
+
+Processes font files:
+
+```javascript
+exports.fonts = fonts;
+```
+
+### Minification
+
+Minifies HTML, CSS, and JS for production builds:
+
+```javascript
+exports.htmlMin = htmlMin;
+exports.cssMin = cssMin;
+exports.jsMin = jsMin;
+```
+
+### Cleaning
+
+#### `clean`
+
+Deletes the `dist` directory:
+
+```javascript
+exports.clean = clean;
+```
+
+### Server
+
+#### `serve`
+
+Starts a development server with live reload:
+
+```javascript
+exports.serve = serve;
+```
+
+### Production
+
+#### `prod`
+
+Sets the production flag:
+
+```javascript
+exports.prod = prod;
+```
+
+## Watch Files
+
+Watches for changes in source files and reruns relevant tasks:
+
+```javascript
+exports.watchFiles = watchFiles;
+```
+
+## Commands
+
+### Development
+
+For development, run the following command to clean the output directory, build the project, and start a development server with live reload:
+
+```bash
+npm run dev
+```
+
+### Build
+
+To create a production build, which includes minification and optimization, run:
+
+```bash
+npm run build
+```
+
+### Watch
+
+To watch files for changes and automatically rebuild, run:
+
+```bash
+npm run watch
+```
+
+### Preview
+
+To preview the build, run:
+
+```bash
+npm run preview
+```
+
+### Default
+
+The default command runs the development environment in parallel with file watching:
+
+```bash
+
+```
