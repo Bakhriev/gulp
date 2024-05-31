@@ -1,4 +1,4 @@
-export const initModal = (modal, trigger, closeCls) => {
+const initModal = (modal, trigger, closeCls) => {
 	if (!modal) {
 		return;
 	}
@@ -30,7 +30,7 @@ export const initModal = (modal, trigger, closeCls) => {
 	trapFocus(modal);
 };
 
-export const trapFocus = element => {
+const trapFocus = element => {
 	const focusableEls = element.querySelectorAll(
 		'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'
 	);
@@ -38,7 +38,9 @@ export const trapFocus = element => {
 	const lastFocusableEl = focusableEls[focusableEls.length - 1];
 	const KEYCODE_TAB = 9;
 
-	firstFocusableEl.focus();
+	setTimeout(() => {
+		firstFocusableEl.focus();
+	}, 10);
 
 	element.addEventListener('keydown', e => {
 		const isTabPressed = e.key === 'Tab' || e.keyCode === KEYCODE_TAB;
