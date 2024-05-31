@@ -1,15 +1,12 @@
-export const initModal = () => {
-	const modal = document.querySelector('.modal');
-
+export const initModal = (modal, trigger, closeCls) => {
 	if (!modal) {
 		return;
 	}
 
-	const modalTrigger = document.querySelector('');
-
 	const closeModal = () => {
 		modal.classList.remove('show');
 		document.removeEventListener('keyup', handleKeyUp);
+		trigger.focus();
 	};
 
 	const showModal = () => {
@@ -18,7 +15,7 @@ export const initModal = () => {
 	};
 
 	modal.addEventListener('click', e => {
-		if (e.target === modal || e.target.classList.contains('modal__close')) {
+		if (e.target === modal || e.target.classList.contains(`${closeCls}`)) {
 			closeModal();
 		}
 	});
@@ -29,9 +26,6 @@ export const initModal = () => {
 		}
 	};
 
-	modalTrigger.addEventListener('click', () => {
-		showModal();
-	});
+	showModal();
+	trapFocus(modal);
 };
-
-initModal();

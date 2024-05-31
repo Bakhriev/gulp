@@ -107,7 +107,6 @@ function js() {
 				},
 			})
 		)
-		.pipe(webpack(require('./webpack.config')))
 		.pipe(dest(path.build.js))
 		.pipe(browserSync.reload({ stream: true }));
 }
@@ -182,10 +181,7 @@ function cssMin() {
 }
 
 function jsMin() {
-	return src(path.src.js)
-		.pipe(webpack(require('./webpack.config')))
-		.pipe(uglify())
-		.pipe(dest(path.build.js));
+	return src(path.src.js).pipe(uglify()).pipe(dest(path.build.js));
 }
 
 function clean() {

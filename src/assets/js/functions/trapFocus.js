@@ -1,4 +1,4 @@
-const trapFocus = element => {
+export const trapFocus = element => {
 	const focusableEls = element.querySelectorAll(
 		'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'
 	);
@@ -27,36 +27,4 @@ const trapFocus = element => {
 			}
 		}
 	});
-};
-
-const initModal = (modal, trigger, closeCls) => {
-	if (!modal) {
-		return;
-	}
-
-	const closeModal = () => {
-		modal.classList.remove('show');
-		document.removeEventListener('keyup', handleKeyUp);
-		trigger.focus();
-	};
-
-	const showModal = () => {
-		modal.classList.add('show');
-		document.addEventListener('keyup', handleKeyUp);
-	};
-
-	modal.addEventListener('click', e => {
-		if (e.target === modal || e.target.classList.contains(`${closeCls}`)) {
-			closeModal();
-		}
-	});
-
-	const handleKeyUp = e => {
-		if (e.key === 'Escape') {
-			closeModal();
-		}
-	};
-
-	showModal();
-	trapFocus(modal);
 };
