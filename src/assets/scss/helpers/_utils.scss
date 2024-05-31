@@ -9,6 +9,7 @@
 	color: inherit;
 	background-color: transparent;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 .list-reset {
@@ -42,8 +43,4 @@
 	height: 1px !important;
 	white-space: nowrap !important;
 	clip: rect(0, 0, 0, 0) !important;
-}
-
-.pointer {
-	cursor: pointer;
 }

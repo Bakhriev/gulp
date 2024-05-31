@@ -2,27 +2,30 @@
 
 const { src, dest, series, parallel, watch } = require('gulp');
 
+const htmlmin = require('gulp-htmlmin');
+const fileinclude = require('gulp-file-include');
+
 const sass = require('gulp-sass')(require('node-sass'));
 const cssbeautify = require('gulp-cssbeautify');
 const autoprefixer = require('gulp-autoprefixer');
-const plumber = require('gulp-plumber');
-const browserSync = require('browser-sync').create();
-const notify = require('gulp-notify');
-const fileinclude = require('gulp-file-include');
-const del = require('del');
-const svgSprite = require('gulp-svg-sprite');
 const gcmq = require('gulp-group-css-media-queries');
-const htmlmin = require('gulp-htmlmin');
 const cleanCSS = require('gulp-clean-css');
+
 const uglify = require('gulp-uglify');
+
+const svgSprite = require('gulp-svg-sprite');
+
 const flatten = require('gulp-flatten');
 
-// for webpack
+const notify = require('gulp-notify');
+const del = require('del');
+const plumber = require('gulp-plumber');
+const browserSync = require('browser-sync').create();
+
 const webpack = require('webpack-stream');
 const cssLoader = require('css-loader');
 const styleLoader = require('style-loader');
 
-// Paths
 const srcPath = 'src/';
 const distPath = 'dist/';
 
@@ -32,21 +35,23 @@ const path = {
 		css: distPath + 'assets/css',
 		js: distPath + 'assets/js',
 		img: distPath + 'assets/img',
-		video: distPath + 'assets/video',
 		svg: distPath + 'assets/img/svg',
-		vendors: distPath + 'assets/vendors',
+		video: distPath + 'assets/video',
 		fonts: distPath + 'assets/fonts',
+		vendors: distPath + 'assets/vendors',
 	},
+
 	src: {
 		html: srcPath + '*.html',
 		css: srcPath + 'assets/scss/**/*.scss',
 		js: srcPath + 'assets/js/**/*.js',
 		img: srcPath + 'assets/**/*.{jpg,jpeg,png,webp,avif}',
-		video: srcPath + 'assets/video/**/*',
 		svg: srcPath + 'assets/**/*.svg',
-		vendors: srcPath + 'assets/vendors/**/*.{css,js}',
+		video: srcPath + 'assets/video/**/*',
 		fonts: srcPath + 'assets/fonts/**/*',
+		vendors: srcPath + 'assets/vendors/**/*.{css,js}',
 	},
+
 	clean: distPath,
 };
 
@@ -172,7 +177,7 @@ function cssMin() {
 				cascade: false,
 			})
 		)
-		.pipe(cleanCSS())
+		.pipe(cleanCSS({ level: 2 }))
 		.pipe(dest(path.build.css));
 }
 
@@ -183,7 +188,6 @@ function jsMin() {
 		.pipe(dest(path.build.js));
 }
 
-// Other Tasks
 function clean() {
 	return del(path.clean);
 }

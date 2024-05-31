@@ -2,14 +2,19 @@
 	$burgerColor: #000;
 	$burgerActiveColor: #000;
 
+	display: none;
+
+	@media screen and (max-width: 992px) {
+		display: block;
+	}
+
 	position: relative;
 	z-index: 5;
 
-	display: none;
-
 	width: 30px;
 	height: 30px;
-	padding: 0;
+
+	text-align: left;
 
 	pointer-events: initial;
 	cursor: pointer;
@@ -35,6 +40,7 @@
 			transform: rotate3d(0, 0, 1, 45deg);
 		}
 	}
+
 	span {
 		position: absolute;
 		top: calc(50% - 1px);
