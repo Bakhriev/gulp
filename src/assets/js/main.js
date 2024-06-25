@@ -21,3 +21,20 @@ overlay.addEventListener('click', () => {
 	overlay.classList.remove('active');
 	mobileMenu.classList.remove('active');
 });
+
+const swiper = new Swiper('.daily-ration__slider', {
+	pagination: {
+		el: '.swiper-pagination',
+	},
+
+	// Navigation arrows
+	navigation: {
+		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-prev',
+	},
+
+	// And if we need scrollbar
+	scrollbar: {
+		el: '.swiper-scrollbar',
+	},
+});

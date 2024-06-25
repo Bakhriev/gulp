@@ -22,6 +22,7 @@
 	}
 
 	&__inner {
+		margin-bottom: 135px;
 	}
 
 	&__info {
@@ -76,6 +77,10 @@
 	padding: 18px 22px;
 	border-radius: 10px;
 	background-color: var(--white);
+
+	display: flex;
+	flex-direction: column;
+
 	&__title {
 		margin-bottom: 14px;
 
@@ -97,10 +102,8 @@
 	&__calorie {
 		padding: 4px 10px;
 		border-radius: 4px;
-		font-family: 'Inter', sans-serif;
 		font-weight: 700;
-		font-size: 16px;
-		color: #12221a;
+		color: var(--black-green);
 
 		background: var(--green-b2b);
 	}
@@ -109,5 +112,9 @@
 	}
 
 	&__img {
+		margin: 0 auto;
+		width: 150px;
+		height: 178px;
+		object-fit: cover;
 	}
 }
