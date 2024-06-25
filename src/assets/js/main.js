@@ -23,6 +23,17 @@ overlay.addEventListener('click', () => {
 });
 
 const swiper = new Swiper('.daily-ration__slider', {
+	slidesPerView: 2,
+	slidesPerGroup: 2,
+	spaceBetween: 20,
+
+	breakpoints: {
+		575: {
+			slidesPerView: 'auto',
+			spaceBetween: 12,
+		},
+	},
+
 	pagination: {
 		el: '.swiper-pagination',
 	},

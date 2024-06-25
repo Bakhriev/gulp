@@ -46,8 +46,34 @@ body {
 	background-color: var(--orange);
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+	cursor: pointer;
+}
+
 .swiper-button-prev {
 	&::after {
 		font-size: 0;
+		width: 30px;
+		height: 30px;
+
+		background-image: url('../img/svg/arrow.svg');
+		background-position: center center;
+		background-size: 12px 20px;
+		background-repeat: no-repeat;
+		rotate: 180deg;
+	}
+}
+
+.swiper-button-next {
+	&::after {
+		font-size: 0;
+		width: 30px;
+		height: 30px;
+
+		background-image: url('../img/svg/arrow.svg');
+		background-position: center center;
+		background-size: 12px 20px;
+		background-repeat: no-repeat;
 	}
 }

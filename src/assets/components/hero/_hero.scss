@@ -2,6 +2,10 @@
 	position: relative;
 	padding-top: 146px;
 
+	@media screen and (max-width: 992px) {
+		padding-top: 128px;
+	}
+
 	&::before {
 		content: '';
 		position: absolute;
@@ -16,6 +20,18 @@
 		background-position: center center;
 		background-size: cover;
 		background-repeat: no-repeat;
+
+		@media screen and (max-width: 992px) {
+			top: 0;
+			border-radius: 0 0 20px 20px;
+			left: calc(50% - 1px);
+			height: 665px;
+		}
+
+		@media screen and (max-width: 420px) {
+			width: 100%;
+			background-image: url('../img/hero-bg-mobile.png');
+		}
 	}
 
 	&__container {
@@ -23,6 +39,9 @@
 
 	&__inner {
 		margin-bottom: 135px;
+		@media screen and (max-width: 420px) {
+			margin-bottom: 460px;
+		}
 	}
 
 	&__info {
@@ -32,6 +51,9 @@
 
 	&__title {
 		margin-bottom: 40px;
+		@media screen and (max-width: 992px) {
+			margin-bottom: 25px;
+		}
 	}
 
 	&__link {
@@ -51,6 +73,11 @@
 			background-color: var(--pink);
 			scale: 0.97;
 		}
+
+		@media screen and (max-width: 992px) {
+			padding: 12px 30px;
+			font-size: 16px;
+		}
 	}
 }
 
@@ -59,21 +86,77 @@
 	font-weight: 600;
 	font-size: 42px;
 	color: var(--black-green);
+
+	@media screen and (max-width: 992px) {
+		font-size: 36px;
+	}
+
+	@media screen and (max-width: 575px) {
+		font-size: 20px;
+	}
 }
 
 .daily-ration {
 	&__title {
 		margin-bottom: 35px;
 
-		font-family: 'Unbounded', sans-serif;
+		font-family: var(--second-family);
 		font-weight: 600;
 		font-size: 28px;
 		color: var(--black);
+
+		@media screen and (max-width: 992px) {
+			span {
+				color: var(--white);
+			}
+		}
+
+		@media screen and (max-width: 420px) {
+			margin-bottom: 24px;
+			font-size: 18px;
+			span {
+				color: var(--black);
+			}
+		}
+	}
+
+	&__slider {
+		.swiper-slide {
+			width: 210px;
+			@media screen and (max-width: 575px) {
+				width: 160px;
+			}
+		}
+		.diet-card {
+			@media screen and (max-width: 992px) {
+				background-color: #f9f9f9;
+			}
+		}
+	}
+
+	&__slider-controls {
+		margin-top: 24px;
+		position: relative;
+		height: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+
+		.swiper-pagination {
+			position: static;
+			width: max-content;
+		}
+
+		.swiper-button-prev,
+		.swiper-button-next {
+			position: static;
+			margin: 0;
+		}
 	}
 }
 
 .diet-card {
-	width: 210px;
 	padding: 18px 22px;
 	border-radius: 10px;
 	background-color: var(--white);
@@ -81,12 +164,24 @@
 	display: flex;
 	flex-direction: column;
 
+	@media screen and (max-width: 992px) {
+		padding: 18px;
+	}
+
 	&__title {
 		margin-bottom: 14px;
 
 		font-weight: 700;
 		font-size: 22px;
 		color: #2e2e2e;
+
+		@media screen and (max-width: 992px) {
+			margin-bottom: 10px;
+		}
+
+		@media screen and (max-width: 575px) {
+			font-size: 18px;
+		}
 	}
 
 	&__info {
@@ -97,6 +192,13 @@
 		justify-content: space-between;
 		flex-wrap: wrap;
 		gap: 5px;
+
+		@media screen and (max-width: 992px) {
+			margin-bottom: 15px;
+		}
+		@media screen and (max-width: 575px) {
+			flex-direction: column;
+		}
 	}
 
 	&__calorie {
@@ -116,5 +218,9 @@
 		width: 150px;
 		height: 178px;
 		object-fit: cover;
+		@media screen and (max-width: 575px) {
+			width: 104px;
+			height: 128px;
+		}
 	}
 }
