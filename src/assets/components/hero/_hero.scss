@@ -1,0 +1,113 @@
+.hero {
+	position: relative;
+	padding-top: 146px;
+
+	&::before {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		top: 16px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 1860px;
+		height: 742px;
+
+		background-image: url('../img/hero-bg.png');
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	&__container {
+	}
+
+	&__inner {
+	}
+
+	&__info {
+		max-width: 730px;
+		width: 100%;
+	}
+
+	&__title {
+		margin-bottom: 40px;
+	}
+
+	&__link {
+		display: inline-block;
+		border-radius: 10px;
+		background-color: var(--orange);
+		padding: 14px 30px;
+		font-weight: 600;
+		font-size: 18px;
+		color: var(--white);
+		transition: background-color 0.2s ease-in-out;
+		@include hover {
+			background-color: var(--pink);
+		}
+
+		&:active {
+			background-color: var(--pink);
+			scale: 0.97;
+		}
+	}
+}
+
+.title {
+	font-family: var(--second-family);
+	font-weight: 600;
+	font-size: 42px;
+	color: var(--black-green);
+}
+
+.daily-ration {
+	&__title {
+		margin-bottom: 35px;
+
+		font-family: 'Unbounded', sans-serif;
+		font-weight: 600;
+		font-size: 28px;
+		color: var(--black);
+	}
+}
+
+.diet-card {
+	width: 210px;
+	padding: 18px 22px;
+	border-radius: 10px;
+	background-color: var(--white);
+	&__title {
+		margin-bottom: 14px;
+
+		font-weight: 700;
+		font-size: 22px;
+		color: #2e2e2e;
+	}
+
+	&__info {
+		margin-bottom: 40px;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 5px;
+	}
+
+	&__calorie {
+		padding: 4px 10px;
+		border-radius: 4px;
+		font-family: 'Inter', sans-serif;
+		font-weight: 700;
+		font-size: 16px;
+		color: #12221a;
+
+		background: var(--green-b2b);
+	}
+
+	&__meal-count {
+	}
+
+	&__img {
+	}
+}

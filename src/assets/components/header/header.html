@@ -1,3 +1,67 @@
-<header class="header">
-	<div class="header__container container"></div>
+<header class="header header--absolute">
+	<div class="header__container container">
+		<div class="header__inner">
+			<div class="header__left">
+				<img
+					width="177"
+					height="61"
+					src="./assets/img/svg/logo.svg"
+					alt="logo"
+					class="logo" />
+
+				<span class="header__city">Санкт-Петербург</span>
+			</div>
+
+			<nav class="header__nav nav">
+				<ul class="header__menu menu list-reset">
+					<li class="menu__item">
+						<a href="#" class="menu__link">Доставка</a>
+					</li>
+					<li class="menu__item">
+						<a href="#" class="menu__link">Оплата</a>
+					</li>
+					<li class="menu__item">
+						<a href="#" class="menu__link">О нас</a>
+					</li>
+					<li class="menu__item">
+						<a href="#" class="menu__link">Связаться</a>
+					</li>
+				</ul>
+			</nav>
+
+			<button class="header__burger burger btn-reset">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+
+			<div class="header__right">
+				<a href="tel:+88003500969" class="header__phone-link phone-link">
+					<span class="font-semibold">8 800 350-09-69</span>
+					<span class="underline text-orange">Перезвоните мне</span>
+				</a>
+
+				<div class="header__actions">
+					<a
+						href="tel:+88003500969"
+						class="icon-wrapper"
+						aria-label="личный кабинет">
+						<svg aria-hidden="true">
+							<use href="./assets/img/svg/sprite.svg#phone"></use>
+						</svg>
+					</a>
+					<a href="#" class="icon-wrapper" aria-label="личный кабинет">
+						<svg aria-hidden="true">
+							<use href="./assets/img/svg/sprite.svg#user"></use>
+						</svg>
+					</a>
+					<a href="#" class="icon-wrapper" aria-label="корзина">
+						<svg aria-hidden="true">
+							<use href="./assets/img/svg/sprite.svg#cart"></use>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </header>

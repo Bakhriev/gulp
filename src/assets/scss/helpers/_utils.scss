@@ -29,10 +29,6 @@
 	color: inherit;
 }
 
-.disable-scroll {
-	overflow: hidden !important;
-}
-
 .visually-hidden {
 	position: absolute !important;
 	overflow: hidden !important;
@@ -43,4 +39,24 @@
 	height: 1px !important;
 	white-space: nowrap !important;
 	clip: rect(0, 0, 0, 0) !important;
+}
+
+.disable-scroll {
+	overflow: hidden !important;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.text-orange {
+	color: var(--orange);
+}
+
+.font-semibold {
+	font-weight: 600;
+}
+
+.font-bold {
+	font-weight: 700;
 }
