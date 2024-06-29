@@ -6,7 +6,6 @@
 
 body {
 	font: 400 16px/1.15 var(--font-family);
-	color: var(--black);
 
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -31,49 +30,4 @@ body {
 
 	max-width: 1584px;
 	width: 100%;
-}
-
-.swiper-pagination-bullet {
-	width: 10px;
-	height: 10px;
-	border-radius: 50%;
-	border: 1px solid var(--orange);
-	background-color: var(--white);
-	opacity: 1;
-	transition: background-color 0.2s ease-in-out;
-}
-.swiper-pagination-bullet-active {
-	background-color: var(--orange);
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-	cursor: pointer;
-}
-
-.swiper-button-prev {
-	&::after {
-		font-size: 0;
-		width: 30px;
-		height: 30px;
-
-		background-image: url('../img/svg/arrow.svg');
-		background-position: center center;
-		background-size: 12px 20px;
-		background-repeat: no-repeat;
-		rotate: 180deg;
-	}
-}
-
-.swiper-button-next {
-	&::after {
-		font-size: 0;
-		width: 30px;
-		height: 30px;
-
-		background-image: url('../img/svg/arrow.svg');
-		background-position: center center;
-		background-size: 12px 20px;
-		background-repeat: no-repeat;
-	}
 }

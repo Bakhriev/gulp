@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
-	@include('./_head.html')
-	<body>
+	@include('./common/_head.html')
+	<body ontouchstart>
 		@include('./assets/components/overlay/overlay.html')
 		<div class="app">
 			@include('./assets/components/header/header.html')
@@ -13,7 +13,6 @@
 			</main>
 			@include('./assets/components/footer/footer.html')
 		</div>
-		@include('./assets/components/mobile-menu/mobile-menu.html')
-		@include('./_scripts.html')
+		@include('./common/_scripts.html')
 	</body>
 </html>
