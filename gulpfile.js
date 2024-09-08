@@ -8,7 +8,6 @@ const concatCss = require('gulp-concat-css');
 const htmlmin = require('gulp-htmlmin');
 const fileinclude = require('gulp-file-include');
 
-const sass = require('gulp-sass')(require('node-sass'));
 const cssbeautify = require('gulp-cssbeautify');
 const autoprefixer = require('gulp-autoprefixer');
 const gcmq = require('gulp-group-css-media-queries');
@@ -86,6 +85,7 @@ function css() {
 				paths: [fPath.join(__dirname, '/src/assets/less', 'includes')],
 			})
 		)
+		.pipe(concatCss('main.css'))
 		.pipe(gcmq())
 		.pipe(
 			autoprefixer({
@@ -93,7 +93,6 @@ function css() {
 			})
 		)
 		.pipe(cssbeautify())
-		.pipe(concatCss('main.css'))
 		.pipe(dest(path.build.css))
 		.pipe(browserSync.reload({ stream: true }));
 }
@@ -173,13 +172,18 @@ function htmlMin() {
 
 function cssMin() {
 	return src(path.src.css)
-		.pipe(less())
+		.pipe(
+			less({
+				paths: [fPath.join(__dirname, '/src/assets/less', 'includes')],
+			})
+		)
 		.pipe(gcmq())
 		.pipe(
 			autoprefixer({
 				cascade: false,
 			})
 		)
+		.pipe(concatCss('main.css'))
 		.pipe(cleanCSS({ level: 2 }))
 		.pipe(dest(path.build.css));
 }
