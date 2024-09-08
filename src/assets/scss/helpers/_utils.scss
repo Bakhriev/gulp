@@ -41,37 +41,10 @@
 	clip: rect(0, 0, 0, 0) !important;
 }
 
-.lock {
+.overflow-hidden {
 	overflow: hidden !important;
 }
 
 [hidden] {
 	display: none;
-}
-
-.article-margins {
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6,
-	p {
-		margin-bottom: 18px;
-		line-height: 1.15;
-	}
-
-	ul,
-	ol {
-		margin: 0;
-		margin-bottom: 18px;
-	}
-
-	blockquote {
-		margin-bottom: 18px;
-	}
-
-	> div {
-		margin-bottom: 18px;
-	}
 }
