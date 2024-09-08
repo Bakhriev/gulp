@@ -1,6 +1,9 @@
 'use strict';
-
 const { src, dest, series, parallel, watch } = require('gulp');
+
+const less = require('gulp-less');
+const fPath = require('path');
+const concatCss = require('gulp-concat-css');
 
 const htmlmin = require('gulp-htmlmin');
 const fileinclude = require('gulp-file-include');
@@ -39,7 +42,7 @@ const path = {
 
 	src: {
 		html: srcPath + '*.html',
-		css: srcPath + 'assets/scss/**/*.{scss,css}',
+		css: srcPath + 'assets/less/**/*.{less,css}',
 		js: srcPath + 'assets/js/**/*.js',
 		img: srcPath + 'assets/**/*.{jpg,jpeg,png,webp,avif}',
 		svg: srcPath + 'assets/**/*.svg',
@@ -71,14 +74,18 @@ function css() {
 			plumber({
 				errorHandler: function (err) {
 					notify.onError({
-						title: 'SCSS Error',
+						title: 'Less Error',
 						message: 'Error: <%= error.message %>',
 					})(err);
 					this.emit('end');
 				},
 			})
 		)
-		.pipe(sass())
+		.pipe(
+			less({
+				paths: [fPath.join(__dirname, '/src/assets/less', 'includes')],
+			})
+		)
 		.pipe(gcmq())
 		.pipe(
 			autoprefixer({
@@ -86,6 +93,7 @@ function css() {
 			})
 		)
 		.pipe(cssbeautify())
+		.pipe(concatCss('main.css'))
 		.pipe(dest(path.build.css))
 		.pipe(browserSync.reload({ stream: true }));
 }
@@ -165,7 +173,7 @@ function htmlMin() {
 
 function cssMin() {
 	return src(path.src.css)
-		.pipe(sass())
+		.pipe(less())
 		.pipe(gcmq())
 		.pipe(
 			autoprefixer({
@@ -223,7 +231,7 @@ const preview = series(serve);
 function watchFiles() {
 	watch([path.src.html], html);
 	watch([srcPath + '**/*.html'], html);
-	watch([srcPath + 'assets/components/**/*.scss'], css);
+	watch([srcPath + 'assets/components/**/*.less'], css);
 	watch([path.src.css], css);
 	watch([path.src.js], js);
 	watch([srcPath + 'assets/js/**/*.js'], js);

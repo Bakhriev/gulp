@@ -24,12 +24,12 @@ body {
 }
 
 .container {
-	$padding: 15px;
-	$maxWidth: 1000px;
+	@padding: 15px;
+	@maxWidth: 1000px;
 
 	margin-inline: auto;
-	padding-inline: $padding;
+	padding-inline: @padding;
 
-	max-width: $maxWidth + ($padding * 2);
+	max-width: @maxWidth + (@padding * 2);
 	width: 100%;
 }

@@ -1,34 +1,34 @@
-@mixin center {
+.center {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	translate: -50% -50%;
 }
 
-@mixin center-y {
+.center-y {
 	top: 50%;
 	translate: 0 -50%;
 }
 
-@mixin hover {
+.hover(@styles) {
 	@media (any-hover: hover) and (pointer: fine) {
 		&:hover {
-			@content;
+			@styles();
 		}
 	}
 }
 
-@mixin text-shorten($numLines: 1) {
+.text-shorten(@numLines: 1) {
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
 
-	@supports (-webkit-line-clamp: $numLines) {
+	@supports (-webkit-line-clamp: @numLines) {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: initial;
 		display: -webkit-box;
-		-webkit-line-clamp: $numLines;
+		-webkit-line-clamp: @numLines;
 		-webkit-box-orient: vertical;
 	}
 }
