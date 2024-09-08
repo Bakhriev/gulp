@@ -22,14 +22,14 @@
 
 ## Installation
 
-To get started with this Gulp build system, you need to have Node.js and yarn installed on your machine. Then, follow these steps:
+To get started with this Gulp build system, you need to have Node.js. Then, follow these steps:
 
 1. Clone or download the repository.
 2. Navigate to the project directory.
 3. Install the dependencies using yarn or npm:
 
    ```bash
-   yarn install
+   npm install
    ```
 
 ## File Structure
@@ -70,13 +70,13 @@ project/
 ### Dev
 
 ```bash
-yarn run dev
+npm run dev
 ```
 
 ### Build
 
 ```bash
-yarn run build
+npm run build
 ```
 
 ### Preview
@@ -84,5 +84,5 @@ yarn run build
 To preview the build
 
 ```bash
-yarn run preview
+npm run preview
 ```
