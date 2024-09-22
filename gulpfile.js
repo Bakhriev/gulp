@@ -5,6 +5,8 @@ const { src, dest, series, parallel, watch } = require('gulp');
 const htmlmin = require('gulp-htmlmin');
 const fileinclude = require('gulp-file-include');
 
+const gulpif = require('gulp-if');
+
 const sass = require('gulp-sass')(require('node-sass'));
 const cssbeautify = require('gulp-cssbeautify');
 const autoprefixer = require('gulp-autoprefixer');
@@ -24,6 +26,8 @@ const browserSync = require('browser-sync').create();
 
 const srcPath = 'src/';
 const distPath = 'dist/';
+
+let isProd = process.env.NODE_ENV?.replace(' ', '') === 'prod';
 
 const path = {
 	build: {
@@ -51,9 +55,7 @@ const path = {
 	clean: distPath,
 };
 
-let isProd = false;
-
-function html() {
+const html = () => {
 	return src(path.src.html)
 		.pipe(
 			fileinclude({
@@ -61,11 +63,17 @@ function html() {
 				basepath: '@file',
 			})
 		)
+		.pipe(
+			gulpif(
+				isProd,
+				htmlmin({ collapseWhitespace: true, removeComments: true })
+			)
+		)
 		.pipe(dest(path.build.html))
 		.pipe(browserSync.reload({ stream: true }));
-}
+};
 
-function css() {
+const css = () => {
 	return src(path.src.css)
 		.pipe(
 			plumber({
@@ -86,11 +94,12 @@ function css() {
 			})
 		)
 		.pipe(cssbeautify())
+		.pipe(gulpif(isProd, cleanCSS({ level: 2 })))
 		.pipe(dest(path.build.css))
 		.pipe(browserSync.reload({ stream: true }));
-}
+};
 
-function js() {
+const js = () => {
 	return src(path.src.js)
 		.pipe(
 			plumber({
@@ -103,19 +112,20 @@ function js() {
 				},
 			})
 		)
+		.pipe(gulpif(isProd, uglify()))
 		.pipe(dest(path.build.js))
 		.pipe(browserSync.reload({ stream: true }));
-}
+};
 
-function img() {
+const img = () => {
 	return src(path.src.img).pipe(flatten()).pipe(dest(path.build.img));
-}
+};
 
-function video() {
+const video = () => {
 	return src(path.src.video).pipe(dest(path.build.video));
-}
+};
 
-function svgToSprite() {
+const svgToSprite = () => {
 	return src(path.src.svg)
 		.pipe(flatten())
 		.pipe(
@@ -129,73 +139,38 @@ function svgToSprite() {
 		)
 		.pipe(dest(path.build.svg))
 		.pipe(browserSync.reload({ stream: true }));
-}
+};
 
-function svgNormal() {
+const svgNormal = () => {
 	return src(path.src.svg)
 		.pipe(flatten())
 		.pipe(dest(path.build.svg))
 		.pipe(browserSync.reload({ stream: true }));
-}
+};
 
-function vendors() {
+const vendors = () => {
 	return src(path.src.vendors)
 		.pipe(dest(path.build.vendors))
 		.pipe(browserSync.reload({ stream: true }));
-}
+};
 
-function fonts() {
+const fonts = () => {
 	return src(path.src.fonts)
 		.pipe(dest(path.build.fonts))
 		.pipe(browserSync.reload({ stream: true }));
-}
+};
 
-// Minify
-function htmlMin() {
-	return src(path.src.html)
-		.pipe(
-			fileinclude({
-				prefix: '@',
-				basepath: '@file',
-			})
-		)
-		.pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
-		.pipe(dest(path.build.html));
-}
-
-function cssMin() {
-	return src(path.src.css)
-		.pipe(sass())
-		.pipe(gcmq())
-		.pipe(
-			autoprefixer({
-				cascade: false,
-			})
-		)
-		.pipe(cleanCSS({ level: 2 }))
-		.pipe(dest(path.build.css));
-}
-
-function jsMin() {
-	return src(path.src.js).pipe(uglify()).pipe(dest(path.build.js));
-}
-
-function clean() {
+const clean = () => {
 	return del(path.clean);
-}
+};
 
-function serve() {
+const serve = () => {
 	browserSync.init({
 		server: {
 			baseDir: distPath,
 		},
 	});
-}
-
-function prod(done) {
-	!isProd;
-	done();
-}
+};
 
 const dev = series(
 	clean,
@@ -205,22 +180,12 @@ const dev = series(
 
 const build = series(
 	clean,
-	parallel(
-		htmlMin,
-		cssMin,
-		jsMin,
-		img,
-		video,
-		svgToSprite,
-		svgNormal,
-		vendors,
-		fonts
-	)
+	parallel(html, css, js, img, video, svgToSprite, svgNormal, vendors, fonts)
 );
 
 const preview = series(serve);
 
-function watchFiles() {
+const watchFiles = () => {
 	watch([path.src.html], html);
 	watch([srcPath + '**/*.html'], html);
 	watch([srcPath + 'assets/components/**/*.scss'], css);
@@ -235,16 +200,14 @@ function watchFiles() {
 	watch([path.src.svg], svgNormal);
 	watch([path.src.vendors], vendors);
 	watch([path.src.fonts], fonts);
-}
+};
 
 const runParallel = parallel(dev, watchFiles);
 
 exports.html = html;
-exports.htmlMin = htmlMin;
+
 exports.css = css;
-exports.cssMin = cssMin;
 exports.js = js;
-exports.jsMin = jsMin;
 exports.img = img;
 exports.video = video;
 exports.svgToSprite = svgToSprite;
