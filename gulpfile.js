@@ -1,5 +1,4 @@
 'use strict';
-
 const { src, dest, series, parallel, watch } = require('gulp');
 
 const htmlmin = require('gulp-htmlmin');
