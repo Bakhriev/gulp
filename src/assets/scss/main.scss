@@ -11,9 +11,9 @@
 @import './helpers/global';
 
 // components
-@import '../components/overlay/overlay';
-@import '../components/burger/burger';
+@import './components/overlay';
+@import './components/burger';
 
-@import '../components/header/header';
-@import '../components/hero/hero';
-@import '../components/footer/footer';
+@import './components/header';
+@import './components/hero';
+@import './components/footer';

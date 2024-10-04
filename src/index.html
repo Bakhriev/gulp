@@ -3,16 +3,14 @@
 	@include('./template/_head.html')
 	<body>
 		<div class="app">
-			@include('./assets/components/overlay/overlay.html')
-			@include('./assets/components/header/header.html')
+			<div class="overlay"></div>
+			@include('./assets/components/header.html')
+			<!--  -->
 			<main class="main">
 				<!--  -->
-
-				@include('./assets/components/hero/hero.html')
-
-				<!--  -->
 			</main>
-			@include('./assets/components/footer/footer.html')
+			<!--  -->
+			@include('./assets/components/footer.html')
 		</div>
 		@include('./template/_scripts.html')
 	</body>

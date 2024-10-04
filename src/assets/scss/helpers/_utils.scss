@@ -29,7 +29,7 @@
 	color: inherit;
 }
 
-.visually-hidden {
+.sr-only {
 	position: absolute !important;
 	overflow: hidden !important;
 	margin: -1px !important;
@@ -41,10 +41,6 @@
 	clip: rect(0, 0, 0, 0) !important;
 }
 
-.overflow-hidden {
+.scroll-lock {
 	overflow: hidden !important;
-}
-
-[hidden] {
-	display: none;
 }

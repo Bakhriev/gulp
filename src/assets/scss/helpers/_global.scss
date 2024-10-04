@@ -6,6 +6,7 @@
 
 body {
 	font: 400 1rem/1.15 var(--font-family);
+	color: var(--primary);
 
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -15,6 +16,8 @@ body {
 	flex-direction: column;
 
 	min-height: 100vh;
+
+	overflow: hidden;
 }
 
 .main {
@@ -23,7 +26,7 @@ body {
 
 .container {
 	$padding: 15px;
-	$maxWidth: 1000px;
+	$maxWidth: 1400px;
 
 	margin-inline: auto;
 	padding-inline: $padding;
