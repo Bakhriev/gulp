@@ -1,36 +1,14 @@
 *,
 *:before,
 *:after {
-	box-sizing: inherit;
-}
-
-html {
 	box-sizing: border-box;
 }
 
 body {
 	margin: 0;
+
 	-webkit-text-size-adjust: 100%;
-}
-
-dd,
-dl,
-figure,
-blockquote {
-	margin: 0;
-}
-
-pre,
-code,
-kbd,
-samp {
-	font-family: monospace, monospace;
-	font-size: inherit;
-}
-
-blockquote,
-q {
-	quotes: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 h1,
@@ -46,19 +24,9 @@ p {
 	margin: 0;
 }
 
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-th {
-	font-weight: inherit;
-}
-
 img {
 	display: block;
 	max-width: 100%;
-	height: auto;
 }
 
 a {
@@ -69,3 +37,32 @@ a {
 svg {
 	display: block;
 }
+
+// table {
+// 	border-collapse: collapse;
+// 	border-spacing: 0;
+// }
+
+// th {
+// 	font-weight: inherit;
+// }
+
+// blockquote,
+// q {
+// 	quotes: none;
+// }
+
+// dd,
+// dl,
+// figure,
+// blockquote {
+// 	margin: 0;
+// }
+
+// pre,
+// code,
+// kbd,
+// samp {
+// 	font-family: monospace, monospace;
+// 	font-size: inherit;
+// }
