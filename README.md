@@ -43,6 +43,7 @@ project/
 │   ├── assets/
 │   │   ├── fonts/
 │   │   ├── img/
+│   │   ├── img/svg/sprite/
 │   │   ├── img/svg/
 │   │   ├── js/
 │   │   ├── scss/
