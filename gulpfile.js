@@ -45,7 +45,7 @@ const path = {
 		css: srcPath + 'assets/scss/**/*.{scss,css}',
 		js: srcPath + 'assets/js/**/*.js',
 		img: srcPath + 'assets/**/*.{jpg,jpeg,png,webp,avif}',
-		svg: srcPath + 'assets/**/*.svg',
+		svg: srcPath + 'assets/img/svg/',
 		video: srcPath + 'assets/video/**/*',
 		fonts: srcPath + 'assets/fonts/**/*',
 		vendors: srcPath + 'assets/vendors/**/*.{css,js}',
@@ -124,9 +124,14 @@ const video = () => {
 	return src(path.src.video).pipe(dest(path.build.video));
 };
 
+const svg = () => {
+	return src(path.src.svg + '*.svg')
+		.pipe(dest(path.build.svg))
+		.pipe(browserSync.reload({ stream: true }));
+};
+
 const svgToSprite = () => {
-	return src(path.src.svg)
-		.pipe(flatten())
+	return src(path.src.svg + 'sprite/**/*.svg')
 		.pipe(
 			svgSprite({
 				mode: {
@@ -136,13 +141,6 @@ const svgToSprite = () => {
 				},
 			})
 		)
-		.pipe(dest(path.build.svg))
-		.pipe(browserSync.reload({ stream: true }));
-};
-
-const svgNormal = () => {
-	return src(path.src.svg)
-		.pipe(flatten())
 		.pipe(dest(path.build.svg))
 		.pipe(browserSync.reload({ stream: true }));
 };
@@ -173,30 +171,25 @@ const serve = () => {
 
 const dev = series(
 	clean,
-	parallel(html, css, js, img, video, svgToSprite, svgNormal, vendors, fonts),
+	parallel(html, css, js, img, video, svg, svgToSprite, vendors, fonts),
 	serve
 );
 
 const build = series(
 	clean,
-	parallel(html, css, js, img, video, svgToSprite, svgNormal, vendors, fonts)
+	parallel(html, css, js, img, video, svg, svgToSprite, vendors, fonts)
 );
 
 const preview = series(serve);
 
 const watchFiles = () => {
-	watch([path.src.html], html);
 	watch([srcPath + '**/*.html'], html);
-	watch([srcPath + 'assets/components/**/*.scss'], css);
 	watch([path.src.css], css);
 	watch([path.src.js], js);
-	watch([srcPath + 'assets/js/**/*.js'], js);
-	watch([srcPath + 'assets/**/*.js'], js);
 	watch([path.src.img], img);
-	watch([srcPath + 'assets/components/**/*.svg'], svgToSprite);
 	watch([path.src.video], video);
-	watch([path.src.svg], svgToSprite);
-	watch([path.src.svg], svgNormal);
+	watch([path.src.svg + '**/*.svg'], svg);
+	watch([path.src.svg + 'sprite/**/*.svg'], svgToSprite);
 	watch([path.src.vendors], vendors);
 	watch([path.src.fonts], fonts);
 };
@@ -209,8 +202,8 @@ exports.css = css;
 exports.js = js;
 exports.img = img;
 exports.video = video;
+exports.svg = svg;
 exports.svgToSprite = svgToSprite;
-exports.svgNormal = svgNormal;
 exports.dev = dev;
 exports.build = build;
 exports.vendors = vendors;

@@ -1,8 +1,9 @@
-// base
-@import './base/reset';
-
 // fonts
 @import './fonts/fonts';
+
+// base
+@import './base/reset';
+@import './base/typography';
 
 // helpers
 @import './helpers/vars';
@@ -14,6 +15,12 @@
 @import './components/overlay';
 @import './components/burger';
 
-@import './components/header';
-@import './components/hero';
-@import './components/footer';
+// sections
+@import './sections/hero';
+
+// layout
+@import './layout/header';
+@import './layout/footer';
+
+// Pages
+@import './pages/home';
