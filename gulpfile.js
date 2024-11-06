@@ -3,6 +3,7 @@ const { src, dest, series, parallel, watch } = require('gulp');
 
 const htmlmin = require('gulp-htmlmin');
 const fileinclude = require('gulp-file-include');
+const sourcemaps = require('gulp-sourcemaps');
 
 const gulpif = require('gulp-if');
 
@@ -85,14 +86,15 @@ const css = () => {
 				},
 			})
 		)
+		.pipe(gulpif(!isProd, sourcemaps.init()))
 		.pipe(sass())
+		.pipe(gulpif(!isProd, sourcemaps.write()))
 		.pipe(gcmq())
 		.pipe(
 			autoprefixer({
 				cascade: false,
 			})
 		)
-		.pipe(cssbeautify())
 		.pipe(gulpif(isProd, cleanCSS({ level: 2 })))
 		.pipe(dest(path.build.css))
 		.pipe(browserSync.reload({ stream: true }));
