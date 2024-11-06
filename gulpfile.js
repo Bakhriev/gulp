@@ -1,54 +1,54 @@
-'use strict';
-const { src, dest, series, parallel, watch } = require('gulp');
+"use strict";
+const { src, dest, series, parallel, watch } = require("gulp");
 
-const htmlmin = require('gulp-htmlmin');
-const fileinclude = require('gulp-file-include');
-const sourcemaps = require('gulp-sourcemaps');
+const htmlmin = require("gulp-htmlmin");
+const fileinclude = require("gulp-file-include");
+const sourcemaps = require("gulp-sourcemaps");
 
-const gulpif = require('gulp-if');
+const gulpif = require("gulp-if");
 
-const sass = require('gulp-sass')(require('node-sass'));
-const autoprefixer = require('gulp-autoprefixer');
-const gcmq = require('gulp-group-css-media-queries');
-const cleanCSS = require('gulp-clean-css');
+const sass = require("gulp-sass")(require("node-sass"));
+const autoprefixer = require("gulp-autoprefixer");
+const gcmq = require("gulp-group-css-media-queries");
+const cleanCSS = require("gulp-clean-css");
 
-const uglify = require('gulp-uglify');
+const uglify = require("gulp-uglify");
 
-const svgSprite = require('gulp-svg-sprite');
+const svgSprite = require("gulp-svg-sprite");
 
-const flatten = require('gulp-flatten');
+const flatten = require("gulp-flatten");
 
-const notify = require('gulp-notify');
-const del = require('del');
-const plumber = require('gulp-plumber');
-const browserSync = require('browser-sync').create();
+const notify = require("gulp-notify");
+const del = require("del");
+const plumber = require("gulp-plumber");
+const browserSync = require("browser-sync").create();
 
-const srcPath = 'src/';
-const distPath = 'dist/';
+const srcPath = "src/";
+const distPath = "dist/";
 
-let isProd = process.env.NODE_ENV?.replace(' ', '') === 'prod';
+let isProd = process.env.NODE_ENV?.replace(" ", "") === "prod";
 
 const path = {
 	build: {
 		html: distPath,
-		css: distPath + 'assets/css',
-		js: distPath + 'assets/js',
-		img: distPath + 'assets/img',
-		svg: distPath + 'assets/img/svg',
-		video: distPath + 'assets/video',
-		fonts: distPath + 'assets/fonts',
-		vendors: distPath + 'assets/vendors',
+		css: distPath + "assets/css",
+		js: distPath + "assets/js",
+		img: distPath + "assets/img",
+		svg: distPath + "assets/img/svg",
+		video: distPath + "assets/video",
+		fonts: distPath + "assets/fonts",
+		vendors: distPath + "assets/vendors",
 	},
 
 	src: {
-		html: srcPath + '*.html',
-		css: srcPath + 'assets/scss/**/*.{scss,css}',
-		js: srcPath + 'assets/js/**/*.js',
-		img: srcPath + 'assets/**/*.{jpg,jpeg,png,webp,avif}',
-		svg: srcPath + 'assets/img/svg/',
-		video: srcPath + 'assets/video/**/*',
-		fonts: srcPath + 'assets/fonts/**/*',
-		vendors: srcPath + 'assets/vendors/**/*.{css,js}',
+		html: srcPath + "*.html",
+		css: srcPath + "assets/scss/**/*.{scss,css}",
+		js: srcPath + "assets/js/**/*.js",
+		img: srcPath + "assets/**/*.{jpg,jpeg,png,webp,avif}",
+		svg: srcPath + "assets/img/svg/",
+		video: srcPath + "assets/video/**/*",
+		fonts: srcPath + "assets/fonts/**/*",
+		vendors: srcPath + "assets/vendors/**/*.{css,js}",
 	},
 
 	clean: distPath,
@@ -58,8 +58,8 @@ const html = () => {
 	return src(path.src.html)
 		.pipe(
 			fileinclude({
-				prefix: '@',
-				basepath: '@file',
+				prefix: "@",
+				basepath: "@file",
 			})
 		)
 		.pipe(
@@ -78,10 +78,10 @@ const css = () => {
 			plumber({
 				errorHandler: function (err) {
 					notify.onError({
-						title: 'SCSS Error',
-						message: 'Error: <%= error.message %>',
+						title: "SCSS Error",
+						message: "Error: <%= error.message %>",
 					})(err);
-					this.emit('end');
+					this.emit("end");
 				},
 			})
 		)
@@ -105,10 +105,10 @@ const js = () => {
 			plumber({
 				errorHandler: function (err) {
 					notify.onError({
-						title: 'JS Error',
-						message: 'Error: <%= error.message %>',
+						title: "JS Error",
+						message: "Error: <%= error.message %>",
 					})(err);
-					this.emit('end');
+					this.emit("end");
 				},
 			})
 		)
@@ -126,18 +126,18 @@ const video = () => {
 };
 
 const svg = () => {
-	return src(path.src.svg + '*.svg')
+	return src(path.src.svg + "*.svg")
 		.pipe(dest(path.build.svg))
 		.pipe(browserSync.reload({ stream: true }));
 };
 
 const svgToSprite = () => {
-	return src(path.src.svg + 'sprite/**/*.svg')
+	return src(path.src.svg + "sprite/**/*.svg")
 		.pipe(
 			svgSprite({
 				mode: {
 					symbol: {
-						sprite: '../sprite.svg',
+						sprite: "../sprite.svg",
 					},
 				},
 			})
@@ -184,13 +184,13 @@ const build = series(
 const preview = series(serve);
 
 const watchFiles = () => {
-	watch([srcPath + '**/*.html'], html);
+	watch([srcPath + "**/*.html"], html);
 	watch([path.src.css], css);
 	watch([path.src.js], js);
 	watch([path.src.img], img);
 	watch([path.src.video], video);
-	watch([path.src.svg + '**/*.svg'], svg);
-	watch([path.src.svg + 'sprite/**/*.svg'], svgToSprite);
+	watch([path.src.svg + "**/*.svg"], svg);
+	watch([path.src.svg + "sprite/**/*.svg"], svgToSprite);
 	watch([path.src.vendors], vendors);
 	watch([path.src.fonts], fonts);
 };
