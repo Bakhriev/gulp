@@ -1,26 +1,26 @@
 // fonts
-@import "./fonts/fonts";
+@use "./fonts/fonts";
 
 // base
-@import "./base/reset";
-@import "./base/typography";
+@use "./base/reset";
+@use "./base/typography";
 
 // helpers
-@import "./helpers/vars";
-@import "./helpers/mixins";
-@import "./helpers/utils";
-@import "./helpers/global";
+@use "./helpers/vars";
+@use "./helpers/mixins";
+@use "./helpers/utils";
+@use "./helpers/global";
 
 // components
-@import "./components/overlay";
-@import "./components/burger";
+@use "./components/overlay";
+@use "./components/burger";
 
 // sections
-@import "./sections/hero";
+@use "./sections/hero";
 
 // layout
-@import "./layout/header";
-@import "./layout/footer";
+@use "./layout/header";
+@use "./layout/footer";
 
 // Pages
-@import "./pages/home";
+@use "./pages/home";
