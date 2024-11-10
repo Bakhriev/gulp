@@ -14,13 +14,11 @@
 // components
 @use "./components/overlay";
 @use "./components/burger";
+@use "./components/header";
+@use "./components/footer";
 
-// sections
+// Sections
 @use "./sections/hero";
-
-// layout
-@use "./layout/header";
-@use "./layout/footer";
 
 // Pages
 @use "./pages/home";
