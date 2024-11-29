@@ -1,0 +1,7 @@
+**/.git
+**/node_modules
+**/package.json
+**/package-lock.json
+**/yarn.lock
+**/README.md
+**/src/assets/vendors/**/*
