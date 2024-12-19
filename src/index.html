@@ -3,18 +3,11 @@
 	@include('./template/_head.html')
 	<body>
 		<div class="app">
-			@include('./assets/html/components/overlay.html')
+			<div class="overlay"></div>
 			@include('./assets/html/components/header.html')
 			<main class="main">
 				<!--  -->
 				@include('./assets/html/sections/hero.html')
-
-				<!-- Svg sprite Example -->
-				<svg width="24" height="24">
-					<use href="./assets/img/svg/sprite.svg#search"></use>
-				</svg>
-				<!-- Normal svg -->
-				<img src="./assets/img/svg/arrow.svg" alt="" />
 				<!--  -->
 			</main>
 			@include('./assets/html/components/footer.html')
