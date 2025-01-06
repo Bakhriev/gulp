@@ -11,12 +11,6 @@ body {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-	html {
-		scroll-behavior: smooth;
-	}
-}
-
 h1,
 h2,
 h3,
@@ -33,6 +27,7 @@ p {
 img {
 	display: block;
 	max-width: 100%;
+	height: auto;
 }
 
 a {
@@ -44,31 +39,17 @@ svg {
 	display: block;
 }
 
-// table {
-// 	border-collapse: collapse;
-// 	border-spacing: 0;
-// }
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
 
-// th {
-// 	font-weight: inherit;
-// }
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 
-// blockquote,
-// q {
-// 	quotes: none;
-// }
-
-// dd,
-// dl,
-// figure,
-// blockquote {
-// 	margin: 0;
-// }
-
-// pre,
-// code,
-// kbd,
-// samp {
-// 	font-family: monospace, monospace;
-// 	font-size: inherit;
-// }
+th {
+	font-weight: inherit;
+}

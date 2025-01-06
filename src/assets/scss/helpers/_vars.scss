@@ -1,11 +1,13 @@
 :root {
-	--font-family: "Segoe UI", sans-serif;
-	--text-primary: #222;
+	--font-primary: "Nunito", serif;
+	--font-secondary: "Nunito", serif;
+
+	--color-primary: #222;
 }
 
 // screens
 $xxl: 1920px;
 $xl: 1440px;
-$lg: 1024px;
+$lg: 992px;
 $md: 768px;
 $sm: 480px;
